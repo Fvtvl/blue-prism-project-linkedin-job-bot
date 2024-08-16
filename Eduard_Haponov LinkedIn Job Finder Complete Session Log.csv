@@ -1,0 +1,825 @@
+StageName,StageType,Result,Resource Start,Direction,Name,Field,Row,Type,Value
+,Undefined,Created session log,2/9/2024 13:37,,,,,,
+Validate Inputs,Sub Sheet,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,IN,Keywords,,,Text,RPA Developer; Junior RPA Developer;
+,,,,IN,Country,,,Text,united kingdom
+Start,Start,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,IN,Keywords,,,Text,RPA Developer; Junior RPA Developer;
+,,,,IN,Country,,,Text,united kingdom
+Validate Keywords,Decision,TRUE,2/9/2024 13:37,,,,,,
+Validate Country,Decision,TRUE,2/9/2024 13:37,,,,,,
+End,End,,2/9/2024 13:37,,,,,,
+Start Up,Sub Sheet,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,IN,URL,,,Text,https://www.linkedin.com/
+,,,,IN,LinkedIn Job Finder Credential Name,,,Text,LinkedIn Job Finder- Eduard Haponov
+Get Credential,Action,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,IN,Credentials Name,,,Text,LinkedIn Job Finder- Eduard Haponov
+,,,,OUT,Username,,,Text,fvtvlnight@gmail.com
+,,,,OUT,Password,,,Password,???????????????
+,,,,OUT,Expiry Date,,,Date,5/4/2024
+,,,,OUT,Status,,,Text,Valid
+Check Credentials Invalid,Decision,TRUE,2/9/2024 13:37,,,,,,
+Check Credentials Expiry ,Decision,TRUE,2/9/2024 13:37,,,,,,
+Kill Chrome,Action,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,IN,Process Name,,,Text,chrome
+Launch ,Action,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,IN,URL,,,Text,https://www.linkedin.com/
+Log In,Action,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,IN,User Name,,,Text,fvtvlnight@gmail.com
+,,,,IN,Password,,,Password,???????????????
+Add Queue,Sub Sheet,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,IN,Keywords,,,Text,RPA Developer; Junior RPA Developer;
+,,,,IN,Country,,,Text,united kingdom
+,,,,IN,Email,,,Text,fvtvlnight@gmail.com
+Split Jobs Key Words to Collection,Action,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,IN,Text to Split,,,Text,RPA Developer; Junior RPA Developer;
+,,,,IN,Split Char,,,Text,;
+,,,,IN,Collection Field Name,,,Text,Keywords
+,,,,OUT,Split Values,,,,
+,,,,OUT,Split Values,Keywords,1,Text,RPA Developer
+,,,,OUT,Split Values,Keywords,2,Text, Junior RPA Developer
+,,,,OUT,Split Values,Keywords,3,Text,
+Remove Empty Rows,Action,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,IN,Collection In,,,,
+,,,,IN,Collection In,Keywords,1,Text,RPA Developer
+,,,,IN,Collection In,Keywords,2,Text, Junior RPA Developer
+,,,,IN,Collection In,Keywords,3,Text,
+,,,,OUT,Collection Out,,,,
+,,,,OUT,Collection Out,Keywords,1,Text,RPA Developer
+,,,,OUT,Collection Out,Keywords,2,Text, Junior RPA Developer
+Count Rows,Action,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,IN,Collection Name,,,Text,Keywords Collection
+,,,,OUT,Count,,,Number,2
+Collection not Empty?,Decision,TRUE,2/9/2024 13:37,,,,,,
+Keywords Loop,Loop Start,1 of 2,2/9/2024 13:37,,,,,,
+Create Quote Case,Multiple Calculation,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,OUT,step1,,,Text,RPA Developer
+,,,,OUT,step2,,,Text,united kingdom
+,,,,OUT,step3,,,Text,fvtvlnight@gmail.com
+,,,,OUT,step4,,,Text,RPA Dngdom
+Is Item in queue already?,Action,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,IN,Queue Name,,,Text,LinkedIn Job Finder
+,,,,IN,Key,,,Text,RPA Dngdom
+,,,,IN,Include Pending,,,Flag,TRUE
+,,,,IN,Include Deferred,,,Flag,TRUE
+,,,,IN,Include Completed,,,Flag,TRUE
+,,,,IN,Include Terminated,,,Flag,TRUE
+,,,,OUT,Result,,,Flag,FALSE
+,,,,OUT,Item IDs,,,,
+In Queue?,Decision,FALSE,2/9/2024 13:37,,,,,,
+Add to Queue,Action,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,IN,Queue Name,,,Text,LinkedIn Job Finder
+,,,,IN,Data,,,,
+,,,,IN,Tags,,,Text,RPA Developer - united kingdom
+,,,,IN,Data,Keywords,1,Text,RPA Developer
+,,,,IN,Data,Country,1,Text,united kingdom
+,,,,IN,Data,Email,1,Text,fvtvlnight@gmail.com
+,,,,IN,Data,ID,1,Text,RPA Dngdom
+,,,,OUT,Item IDs,,,,
+,,,,OUT,Item IDs,Item ID,1,Text,2f841355-d94b-4406-acad-01ac057483a8
+Keywords Loop,Loop End,1 of 2,2/9/2024 13:37,,,,,,
+Create Quote Case,Multiple Calculation,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,OUT,step1,,,Text, Junior RPA Developer
+,,,,OUT,step2,,,Text,united kingdom
+,,,,OUT,step3,,,Text,fvtvlnight@gmail.com
+,,,,OUT,step4,,,Text,Juniongdom
+Is Item in queue already?,Action,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,IN,Queue Name,,,Text,LinkedIn Job Finder
+,,,,IN,Key,,,Text,Juniongdom
+,,,,IN,Include Pending,,,Flag,TRUE
+,,,,IN,Include Deferred,,,Flag,TRUE
+,,,,IN,Include Completed,,,Flag,TRUE
+,,,,IN,Include Terminated,,,Flag,TRUE
+,,,,OUT,Result,,,Flag,FALSE
+,,,,OUT,Item IDs,,,,
+In Queue?,Decision,FALSE,2/9/2024 13:37,,,,,,
+Add to Queue,Action,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,IN,Queue Name,,,Text,LinkedIn Job Finder
+,,,,IN,Data,,,,
+,,,,IN,Tags,,,Text, Junior RPA Developer - united kingdom
+,,,,IN,Data,Keywords,1,Text, Junior RPA Developer
+,,,,IN,Data,Country,1,Text,united kingdom
+,,,,IN,Data,Email,1,Text,fvtvlnight@gmail.com
+,,,,IN,Data,ID,1,Text,Juniongdom
+,,,,OUT,Item IDs,,,,
+,,,,OUT,Item IDs,Item ID,1,Text,7deca756-d4b6-4147-bc0c-9df1ce0c98a4
+Keywords Loop,Loop End,2 of 2,2/9/2024 13:37,,,,,,
+01 - Navigate to Jobs Page,Sub Sheet,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,IN,URL,,,Text,https://www.linkedin.com/
+,,,,IN,LinkedIn Job Finder Credential Name,,,Text,LinkedIn Job Finder- Eduard Haponov
+Jobs Menu - Navigate,Action,,2/9/2024 13:37,,,,,,
+02 - Find Job,Sub Sheet,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,IN,Keywords,,,Text,RPA Developer
+,,,,IN,Country,,,Text,united kingdom
+Search Job,Action,,2/9/2024 13:37,,,,,,
+,,,,,,,,,
+,,,,IN,Keywords,,,Text,RPA Developer
+,,,,IN,Country,,,Text,united kingdom
+03 - Get Jobs,Sub Sheet,,2/9/2024 13:38,,,,,,
+,,,,,,,,,
+,,,,IN,Keywords,,,Text,RPA Developer
+Get Jobs,Action,,2/9/2024 13:38,,,,,,
+,,,,,,,,,
+,,,,IN,Keywords,,,Text,RPA Developer
+,,,,OUT,Result Collection,,,,
+,,,,OUT,Result Collection,Job Keyword,1,Text,
+,,,,OUT,Result Collection,Job Title,1,Text,
+,,,,OUT,Result Collection,Company Name,1,Text,
+,,,,OUT,Result Collection,Location,1,Text,
+,,,,OUT,Result Collection,Posted,1,Text,
+,,,,OUT,Result Collection,Applicants,1,Text,
+,,,,OUT,Result Collection,Salary,1,Text,
+,,,,OUT,Result Collection,Remote/Hybrid,1,Text,
+,,,,OUT,Result Collection,Job Type,1,Text,
+,,,,OUT,Result Collection,Job Level,1,Text,
+,,,,OUT,Result Collection,Company Size,1,Text,
+,,,,OUT,Result Collection,Company Type,1,Text,
+,,,,OUT,Result Collection,About Company,1,Text,
+,,,,OUT,Result Collection,Job Keyword,2,Text,RPA Developer
+,,,,OUT,Result Collection,Job Title,2,Text,"Senior RPA Developer - UiPath, Celonis, ABBYY"
+,,,,OUT,Result Collection,Company Name,2,Text,Orbis
+,,,,OUT,Result Collection,Location,2,Text,United Kingdom
+,,,,OUT,Result Collection,Posted,2,Text,Reposted 5 months ago
+,,,,OUT,Result Collection,Applicants,2,Text,Over 100 applicants
+,,,,OUT,Result Collection,Salary,2,Text,"£50,000/yr - £75,000/yr "
+,,,,OUT,Result Collection,Remote/Hybrid,2,Text,"Remote
+"
+,,,,OUT,Result Collection,Job Type,2,Text, Full-time 
+,,,,OUT,Result Collection,Job Level,2,Text, Mid-Senior level
+,,,,OUT,Result Collection,Company Size,2,Text,51-200 employees
+,,,,OUT,Result Collection,Company Type,2,Text,Staffing and Recruiting
+,,,,OUT,Result Collection,About Company,2,Text,"About the jobSenior RPA Developer - RPA, UiPath, Celonis, ABBYY - Finance, P2P, O2CSalary: £50,0000 - £75,000 + Bonus and BenefitsLocation: UKOrbis have partnered with a leading international consultancy with over 100 clients, who look to design and implement next generation operating models, optimized processes and embed automation to find a Technical Lead (RPA, UiPath).This company has a primary focus on using innovation and tech to deliver more for each client. For the past 10 years they have bought experienced data tools and practitioners to help automate processes and drive transformation and real results delivered with assurance and high efficiency.You will be asked to help build automation, providing solutions with interesting and challenging projects. With a highly skilled team with an abundance of experience, in this highly driven, fast paced environment you will be working closely with stakeholders to ensure that solutions are met and built to fit all needs required.Key Responsibilities –Work with BA's to access and understand potential automation solutions to real life business problems.Provide clear, detailed documentation.Support existing automation's including, root cause analysis, clean-up, and bug fixes.Provide solutions and efficient models that can be translated to stakeholders.Work on high impact projects with high efficiencyContribute to design, build, implementation, testing and maintenance/support of automation solutions.Key Experience –2+ years’ experience in using and building with UiPath.Strong Understanding of best practices with operating models, optimized processes, and automationBeen involved in successful and high impact projects.Can translate models and results to stakeholders and clients.Don’t pass this opportunity if you want to join a leading consultancy with ample of growth opportunities and benefits. As well as work closely with stakeholders driving and automating successful projects!Please send a copy of your CV directly to this advertisement for immediate consideration."
+,,,,OUT,Result Collection,Job Keyword,3,Text,RPA Developer
+,,,,OUT,Result Collection,Job Title,3,Text,Senior RPA Developer - CRM
+,,,,OUT,Result Collection,Company Name,3,Text,Hargreaves Lansdown
+,,,,OUT,Result Collection,Location,3,Text,"Bristol, England, United Kingdom"
+,,,,OUT,Result Collection,Posted,3,Text,3 days ago
+,,,,OUT,Result Collection,Applicants,3,Text,56 applicants
+,,,,OUT,Result Collection,Salary,3,Text,Not Provided
+,,,,OUT,Result Collection,Remote/Hybrid,3,Text,"Remote
+"
+,,,,OUT,Result Collection,Job Type,3,Text, Full-time 
+,,,,OUT,Result Collection,Job Level,3,Text, Mid-Senior level
+,,,,OUT,Result Collection,Company Size,3,Text,"1,001-5,000 employees"
+,,,,OUT,Result Collection,Company Type,3,Text,Financial Services
+,,,,OUT,Result Collection,About Company,3,Text,"About the jobExcited to grow your career?Our purpose is to empower people to save and invest with confidence. We are looking for great people to join us, so please come and invest in YOUR future at HL. About the role Salary: Up to £65,000 dependent on experience We are looking for talented people to join our CRM team as we embark upon our RPA journey. If you are someone with a wealth of RPA experience and want to work on a green field implementation, then we could have a role for you. This is an opportunity to join the UK's number one investment services company, looking after over £120 billion in assets on behalf of 1.8 million UK investors. We are a secure, FTSE 250 company, based in the heart of Bristol now with over 2,700 people. This is your chance to genuinely stamp your mark on one of the UK's most innovative and digital-focused businesses. You'll be given the support and opportunity to grow your career whilst additionally receiving a personal development budget to further build on your knowledge.  What you'll be doingParticipate in the full application life cycle - design, development, testing, and deploymentWork with technical teams and architects to finalise architectural specifications - and create solution and integration designsSetting up, testing and monitoring automated workflows to ensure that business processes function at optimum efficiency without risk of errorMonitoring and maintaining automation post-implementation and resolving any potential issues to ensure smooth business operationsAssist in identifying, troubleshooting, and resolving defects encountered during various stages of project delivery, including during the deployment and implementation of the solution in production environmentsProduce project documentation, including functional and technical designsMaintain standards and best practices and educate our teamMentor developers, while learning from othersCultivate strong working relationships both within working squad and in HL as a whole  About youPossess excellent problem-solving skillsHave excellent written and verbal communicationGreat attention to detailMastery of Automation tools, such as Mulesoft RPA, UiPath, Blue Prism and/or Automation Anywhere  Interview process2 stage interview process, 1 informal chat, 1 technical / competency focused interview.  Working ScheduleStandard Mon - Fri, 09:00 - 17:30 (we are however very flexible on working schedule so please do reach out with any requirements)  Why us?Here at HL, we're the UK's number 1 investment platform for private investors, based in Bristol. For more than 40 years we've helped investors save time, tax and money on their investments. To achieve our mission, we believe we have a workplace like no other, with constant learning, dynamic teams, and a great ethos. We're steered by core values that promote service, quality, innovation, and opportunity in everything we do. What's on offer?Discretionary annual bonus &amp; annual pay review25* days holiday plus bank holidays and 1-day additional Christmas closure timeOption to purchase an additional 5 days holiday per yearFlexible working options available, including hybrid workingPension scheme up to 11% employer contributionSharesave scheme - have a real stake in HL's futureIncome Protection &amp; Life insurance (4 x salary core level of cover)Health care cash plans - including optical, dental, and out patientcareHelp@hand and an Employee Assistance ProgrammeGympass - gym memberships and wellbeing apps availableVariety of travel to work schemes with free bike storage and shower facilitiesAn inhouse barista serving subsidised coffee and snacksJoin HL's sports, I&amp;D networks and volunteering groups (two paid volunteering days per year)LifeWorks Discounts on services, restaurants and retailers* up to 30 days depending on role level &amp; increasing with length of service  We know that sometimes people can be put off applying for a job if they don't tick every box. If you're excited about working for us and have most of the skills or experience we're looking for, please go ahead and apply. We'd love to hear from you! Hargreaves Lansdown is an inclusive employer that values diversity in its workforce. We encourage applications from all individuals without regard to race, religion, gender, sexual orientation, national origin, disability or age. This role may also be available on a flexible working or part time basis - please ask the Recruitment &amp; Onboarding team for more information. Please note, we are unable to provide employment sponsorship to candidates."
+Append Results to Global Collection,Action,,2/9/2024 13:38,,,,,,
+,,,,,,,,,
+,,,,IN,Main Collection,,,,
+,,,,IN,Collection to Append,,,,
+,,,,IN,Main Collection,Job Keyword,1,Text,
+,,,,IN,Main Collection,Job Title,1,Text,
+,,,,IN,Main Collection,Company Name,1,Text,
+,,,,IN,Main Collection,Location,1,Text,
+,,,,IN,Main Collection,Posted,1,Text,
+,,,,IN,Main Collection,Applicants,1,Text,
+,,,,IN,Main Collection,Salary,1,Text,
+,,,,IN,Main Collection,Remote/Hybrid,1,Text,
+,,,,IN,Main Collection,Job Type,1,Text,
+,,,,IN,Main Collection,Job Level,1,Text,
+,,,,IN,Main Collection,Company Size,1,Text,
+,,,,IN,Main Collection,Company Type,1,Text,
+,,,,IN,Main Collection,About Company,1,Text,
+,,,,IN,Collection to Append,Job Keyword,2,Text,
+,,,,IN,Collection to Append,Job Title,2,Text,
+,,,,IN,Collection to Append,Company Name,2,Text,
+,,,,IN,Collection to Append,Location,2,Text,
+,,,,IN,Collection to Append,Posted,2,Text,
+,,,,IN,Collection to Append,Applicants,2,Text,
+,,,,IN,Collection to Append,Salary,2,Text,
+,,,,IN,Collection to Append,Remote/Hybrid,2,Text,
+,,,,IN,Collection to Append,Job Type,2,Text,
+,,,,IN,Collection to Append,Job Level,2,Text,
+,,,,IN,Collection to Append,Company Size,2,Text,
+,,,,IN,Collection to Append,Company Type,2,Text,
+,,,,IN,Collection to Append,About Company,2,Text,
+,,,,IN,Collection to Append,Job Keyword,3,Text,RPA Developer
+,,,,IN,Collection to Append,Job Title,3,Text,"Senior RPA Developer - UiPath, Celonis, ABBYY"
+,,,,IN,Collection to Append,Company Name,3,Text,Orbis
+,,,,IN,Collection to Append,Location,3,Text,United Kingdom
+,,,,IN,Collection to Append,Posted,3,Text,Reposted 5 months ago
+,,,,IN,Collection to Append,Applicants,3,Text,Over 100 applicants
+,,,,IN,Collection to Append,Salary,3,Text,"£50,000/yr - £75,000/yr "
+,,,,IN,Collection to Append,Remote/Hybrid,3,Text,"Remote
+"
+,,,,IN,Collection to Append,Job Type,3,Text, Full-time 
+,,,,IN,Collection to Append,Job Level,3,Text, Mid-Senior level
+,,,,IN,Collection to Append,Company Size,3,Text,51-200 employees
+,,,,IN,Collection to Append,Company Type,3,Text,Staffing and Recruiting
+,,,,IN,Collection to Append,About Company,3,Text,"About the jobSenior RPA Developer - RPA, UiPath, Celonis, ABBYY - Finance, P2P, O2CSalary: £50,0000 - £75,000 + Bonus and BenefitsLocation: UKOrbis have partnered with a leading international consultancy with over 100 clients, who look to design and implement next generation operating models, optimized processes and embed automation to find a Technical Lead (RPA, UiPath).This company has a primary focus on using innovation and tech to deliver more for each client. For the past 10 years they have bought experienced data tools and practitioners to help automate processes and drive transformation and real results delivered with assurance and high efficiency.You will be asked to help build automation, providing solutions with interesting and challenging projects. With a highly skilled team with an abundance of experience, in this highly driven, fast paced environment you will be working closely with stakeholders to ensure that solutions are met and built to fit all needs required.Key Responsibilities –Work with BA's to access and understand potential automation solutions to real life business problems.Provide clear, detailed documentation.Support existing automation's including, root cause analysis, clean-up, and bug fixes.Provide solutions and efficient models that can be translated to stakeholders.Work on high impact projects with high efficiencyContribute to design, build, implementation, testing and maintenance/support of automation solutions.Key Experience –2+ years’ experience in using and building with UiPath.Strong Understanding of best practices with operating models, optimized processes, and automationBeen involved in successful and high impact projects.Can translate models and results to stakeholders and clients.Don’t pass this opportunity if you want to join a leading consultancy with ample of growth opportunities and benefits. As well as work closely with stakeholders driving and automating successful projects!Please send a copy of your CV directly to this advertisement for immediate consideration."
+,,,,IN,Collection to Append,Job Keyword,4,Text,RPA Developer
+,,,,IN,Collection to Append,Job Title,4,Text,Senior RPA Developer - CRM
+,,,,IN,Collection to Append,Company Name,4,Text,Hargreaves Lansdown
+,,,,IN,Collection to Append,Location,4,Text,"Bristol, England, United Kingdom"
+,,,,IN,Collection to Append,Posted,4,Text,3 days ago
+,,,,IN,Collection to Append,Applicants,4,Text,56 applicants
+,,,,IN,Collection to Append,Salary,4,Text,Not Provided
+,,,,IN,Collection to Append,Remote/Hybrid,4,Text,"Remote
+"
+,,,,IN,Collection to Append,Job Type,4,Text, Full-time 
+,,,,IN,Collection to Append,Job Level,4,Text, Mid-Senior level
+,,,,IN,Collection to Append,Company Size,4,Text,"1,001-5,000 employees"
+,,,,IN,Collection to Append,Company Type,4,Text,Financial Services
+,,,,IN,Collection to Append,About Company,4,Text,"About the jobExcited to grow your career?Our purpose is to empower people to save and invest with confidence. We are looking for great people to join us, so please come and invest in YOUR future at HL. About the role Salary: Up to £65,000 dependent on experience We are looking for talented people to join our CRM team as we embark upon our RPA journey. If you are someone with a wealth of RPA experience and want to work on a green field implementation, then we could have a role for you. This is an opportunity to join the UK's number one investment services company, looking after over £120 billion in assets on behalf of 1.8 million UK investors. We are a secure, FTSE 250 company, based in the heart of Bristol now with over 2,700 people. This is your chance to genuinely stamp your mark on one of the UK's most innovative and digital-focused businesses. You'll be given the support and opportunity to grow your career whilst additionally receiving a personal development budget to further build on your knowledge.  What you'll be doingParticipate in the full application life cycle - design, development, testing, and deploymentWork with technical teams and architects to finalise architectural specifications - and create solution and integration designsSetting up, testing and monitoring automated workflows to ensure that business processes function at optimum efficiency without risk of errorMonitoring and maintaining automation post-implementation and resolving any potential issues to ensure smooth business operationsAssist in identifying, troubleshooting, and resolving defects encountered during various stages of project delivery, including during the deployment and implementation of the solution in production environmentsProduce project documentation, including functional and technical designsMaintain standards and best practices and educate our teamMentor developers, while learning from othersCultivate strong working relationships both within working squad and in HL as a whole  About youPossess excellent problem-solving skillsHave excellent written and verbal communicationGreat attention to detailMastery of Automation tools, such as Mulesoft RPA, UiPath, Blue Prism and/or Automation Anywhere  Interview process2 stage interview process, 1 informal chat, 1 technical / competency focused interview.  Working ScheduleStandard Mon - Fri, 09:00 - 17:30 (we are however very flexible on working schedule so please do reach out with any requirements)  Why us?Here at HL, we're the UK's number 1 investment platform for private investors, based in Bristol. For more than 40 years we've helped investors save time, tax and money on their investments. To achieve our mission, we believe we have a workplace like no other, with constant learning, dynamic teams, and a great ethos. We're steered by core values that promote service, quality, innovation, and opportunity in everything we do. What's on offer?Discretionary annual bonus &amp; annual pay review25* days holiday plus bank holidays and 1-day additional Christmas closure timeOption to purchase an additional 5 days holiday per yearFlexible working options available, including hybrid workingPension scheme up to 11% employer contributionSharesave scheme - have a real stake in HL's futureIncome Protection &amp; Life insurance (4 x salary core level of cover)Health care cash plans - including optical, dental, and out patientcareHelp@hand and an Employee Assistance ProgrammeGympass - gym memberships and wellbeing apps availableVariety of travel to work schemes with free bike storage and shower facilitiesAn inhouse barista serving subsidised coffee and snacksJoin HL's sports, I&amp;D networks and volunteering groups (two paid volunteering days per year)LifeWorks Discounts on services, restaurants and retailers* up to 30 days depending on role level &amp; increasing with length of service  We know that sometimes people can be put off applying for a job if they don't tick every box. If you're excited about working for us and have most of the skills or experience we're looking for, please go ahead and apply. We'd love to hear from you! Hargreaves Lansdown is an inclusive employer that values diversity in its workforce. We encourage applications from all individuals without regard to race, religion, gender, sexual orientation, national origin, disability or age. This role may also be available on a flexible working or part time basis - please ask the Recruitment &amp; Onboarding team for more information. Please note, we are unable to provide employment sponsorship to candidates."
+,,,,OUT,Combined Collection,,,,
+,,,,OUT,Combined Collection,Job Keyword,1,Text,
+,,,,OUT,Combined Collection,Job Title,1,Text,
+,,,,OUT,Combined Collection,Company Name,1,Text,
+,,,,OUT,Combined Collection,Location,1,Text,
+,,,,OUT,Combined Collection,Posted,1,Text,
+,,,,OUT,Combined Collection,Applicants,1,Text,
+,,,,OUT,Combined Collection,Salary,1,Text,
+,,,,OUT,Combined Collection,Remote/Hybrid,1,Text,
+,,,,OUT,Combined Collection,Job Type,1,Text,
+,,,,OUT,Combined Collection,Job Level,1,Text,
+,,,,OUT,Combined Collection,Company Size,1,Text,
+,,,,OUT,Combined Collection,Company Type,1,Text,
+,,,,OUT,Combined Collection,About Company,1,Text,
+,,,,OUT,Combined Collection,Job Keyword,2,Text,
+,,,,OUT,Combined Collection,Job Title,2,Text,
+,,,,OUT,Combined Collection,Company Name,2,Text,
+,,,,OUT,Combined Collection,Location,2,Text,
+,,,,OUT,Combined Collection,Posted,2,Text,
+,,,,OUT,Combined Collection,Applicants,2,Text,
+,,,,OUT,Combined Collection,Salary,2,Text,
+,,,,OUT,Combined Collection,Remote/Hybrid,2,Text,
+,,,,OUT,Combined Collection,Job Type,2,Text,
+,,,,OUT,Combined Collection,Job Level,2,Text,
+,,,,OUT,Combined Collection,Company Size,2,Text,
+,,,,OUT,Combined Collection,Company Type,2,Text,
+,,,,OUT,Combined Collection,About Company,2,Text,
+,,,,OUT,Combined Collection,Job Keyword,3,Text,RPA Developer
+,,,,OUT,Combined Collection,Job Title,3,Text,"Senior RPA Developer - UiPath, Celonis, ABBYY"
+,,,,OUT,Combined Collection,Company Name,3,Text,Orbis
+,,,,OUT,Combined Collection,Location,3,Text,United Kingdom
+,,,,OUT,Combined Collection,Posted,3,Text,Reposted 5 months ago
+,,,,OUT,Combined Collection,Applicants,3,Text,Over 100 applicants
+,,,,OUT,Combined Collection,Salary,3,Text,"£50,000/yr - £75,000/yr "
+,,,,OUT,Combined Collection,Remote/Hybrid,3,Text,"Remote
+"
+,,,,OUT,Combined Collection,Job Type,3,Text, Full-time 
+,,,,OUT,Combined Collection,Job Level,3,Text, Mid-Senior level
+,,,,OUT,Combined Collection,Company Size,3,Text,51-200 employees
+,,,,OUT,Combined Collection,Company Type,3,Text,Staffing and Recruiting
+,,,,OUT,Combined Collection,About Company,3,Text,"About the jobSenior RPA Developer - RPA, UiPath, Celonis, ABBYY - Finance, P2P, O2CSalary: £50,0000 - £75,000 + Bonus and BenefitsLocation: UKOrbis have partnered with a leading international consultancy with over 100 clients, who look to design and implement next generation operating models, optimized processes and embed automation to find a Technical Lead (RPA, UiPath).This company has a primary focus on using innovation and tech to deliver more for each client. For the past 10 years they have bought experienced data tools and practitioners to help automate processes and drive transformation and real results delivered with assurance and high efficiency.You will be asked to help build automation, providing solutions with interesting and challenging projects. With a highly skilled team with an abundance of experience, in this highly driven, fast paced environment you will be working closely with stakeholders to ensure that solutions are met and built to fit all needs required.Key Responsibilities –Work with BA's to access and understand potential automation solutions to real life business problems.Provide clear, detailed documentation.Support existing automation's including, root cause analysis, clean-up, and bug fixes.Provide solutions and efficient models that can be translated to stakeholders.Work on high impact projects with high efficiencyContribute to design, build, implementation, testing and maintenance/support of automation solutions.Key Experience –2+ years’ experience in using and building with UiPath.Strong Understanding of best practices with operating models, optimized processes, and automationBeen involved in successful and high impact projects.Can translate models and results to stakeholders and clients.Don’t pass this opportunity if you want to join a leading consultancy with ample of growth opportunities and benefits. As well as work closely with stakeholders driving and automating successful projects!Please send a copy of your CV directly to this advertisement for immediate consideration."
+,,,,OUT,Combined Collection,Job Keyword,4,Text,RPA Developer
+,,,,OUT,Combined Collection,Job Title,4,Text,Senior RPA Developer - CRM
+,,,,OUT,Combined Collection,Company Name,4,Text,Hargreaves Lansdown
+,,,,OUT,Combined Collection,Location,4,Text,"Bristol, England, United Kingdom"
+,,,,OUT,Combined Collection,Posted,4,Text,3 days ago
+,,,,OUT,Combined Collection,Applicants,4,Text,56 applicants
+,,,,OUT,Combined Collection,Salary,4,Text,Not Provided
+,,,,OUT,Combined Collection,Remote/Hybrid,4,Text,"Remote
+"
+,,,,OUT,Combined Collection,Job Type,4,Text, Full-time 
+,,,,OUT,Combined Collection,Job Level,4,Text, Mid-Senior level
+,,,,OUT,Combined Collection,Company Size,4,Text,"1,001-5,000 employees"
+,,,,OUT,Combined Collection,Company Type,4,Text,Financial Services
+,,,,OUT,Combined Collection,About Company,4,Text,"About the jobExcited to grow your career?Our purpose is to empower people to save and invest with confidence. We are looking for great people to join us, so please come and invest in YOUR future at HL. About the role Salary: Up to £65,000 dependent on experience We are looking for talented people to join our CRM team as we embark upon our RPA journey. If you are someone with a wealth of RPA experience and want to work on a green field implementation, then we could have a role for you. This is an opportunity to join the UK's number one investment services company, looking after over £120 billion in assets on behalf of 1.8 million UK investors. We are a secure, FTSE 250 company, based in the heart of Bristol now with over 2,700 people. This is your chance to genuinely stamp your mark on one of the UK's most innovative and digital-focused businesses. You'll be given the support and opportunity to grow your career whilst additionally receiving a personal development budget to further build on your knowledge.  What you'll be doingParticipate in the full application life cycle - design, development, testing, and deploymentWork with technical teams and architects to finalise architectural specifications - and create solution and integration designsSetting up, testing and monitoring automated workflows to ensure that business processes function at optimum efficiency without risk of errorMonitoring and maintaining automation post-implementation and resolving any potential issues to ensure smooth business operationsAssist in identifying, troubleshooting, and resolving defects encountered during various stages of project delivery, including during the deployment and implementation of the solution in production environmentsProduce project documentation, including functional and technical designsMaintain standards and best practices and educate our teamMentor developers, while learning from othersCultivate strong working relationships both within working squad and in HL as a whole  About youPossess excellent problem-solving skillsHave excellent written and verbal communicationGreat attention to detailMastery of Automation tools, such as Mulesoft RPA, UiPath, Blue Prism and/or Automation Anywhere  Interview process2 stage interview process, 1 informal chat, 1 technical / competency focused interview.  Working ScheduleStandard Mon - Fri, 09:00 - 17:30 (we are however very flexible on working schedule so please do reach out with any requirements)  Why us?Here at HL, we're the UK's number 1 investment platform for private investors, based in Bristol. For more than 40 years we've helped investors save time, tax and money on their investments. To achieve our mission, we believe we have a workplace like no other, with constant learning, dynamic teams, and a great ethos. We're steered by core values that promote service, quality, innovation, and opportunity in everything we do. What's on offer?Discretionary annual bonus &amp; annual pay review25* days holiday plus bank holidays and 1-day additional Christmas closure timeOption to purchase an additional 5 days holiday per yearFlexible working options available, including hybrid workingPension scheme up to 11% employer contributionSharesave scheme - have a real stake in HL's futureIncome Protection &amp; Life insurance (4 x salary core level of cover)Health care cash plans - including optical, dental, and out patientcareHelp@hand and an Employee Assistance ProgrammeGympass - gym memberships and wellbeing apps availableVariety of travel to work schemes with free bike storage and shower facilitiesAn inhouse barista serving subsidised coffee and snacksJoin HL's sports, I&amp;D networks and volunteering groups (two paid volunteering days per year)LifeWorks Discounts on services, restaurants and retailers* up to 30 days depending on role level &amp; increasing with length of service  We know that sometimes people can be put off applying for a job if they don't tick every box. If you're excited about working for us and have most of the skills or experience we're looking for, please go ahead and apply. We'd love to hear from you! Hargreaves Lansdown is an inclusive employer that values diversity in its workforce. We encourage applications from all individuals without regard to race, religion, gender, sexual orientation, national origin, disability or age. This role may also be available on a flexible working or part time basis - please ask the Recruitment &amp; Onboarding team for more information. Please note, we are unable to provide employment sponsorship to candidates."
+Mark Item As Completed,Sub Sheet,,2/9/2024 13:38,,,,,,
+Set Tag,Action,,2/9/2024 13:38,,,,,,
+,,,,,,,,,
+,,,,IN,Item ID,,,Text,2f841355-d94b-4406-acad-01ac057483a8
+,,,,IN,Tag,,,Text,Completed
+Mark Completed,Action,,2/9/2024 13:38,,,,,,
+,,,,,,,,,
+,,,,IN,Item ID,,,Text,2f841355-d94b-4406-acad-01ac057483a8
+Reset Consecutive Exception Indicators,Multiple Calculation,,2/9/2024 13:38,,,,,,
+,,,,,,,,,
+,,,,OUT,step1,,,Text,
+,,,,OUT,step2,,,Number,0
+Reset Global Data,Sub Sheet,,2/9/2024 13:38,,,,,,
+Exception Data,Multiple Calculation,,2/9/2024 13:38,,,,,,
+,,,,,,,,,
+,,,,OUT,step1,,,Text,
+,,,,OUT,step2,,,Text,
+01 - Navigate to Jobs Page,Sub Sheet,,2/9/2024 13:38,,,,,,
+,,,,,,,,,
+,,,,IN,URL,,,Text,https://www.linkedin.com/
+,,,,IN,LinkedIn Job Finder Credential Name,,,Text,LinkedIn Job Finder- Eduard Haponov
+Jobs Menu - Navigate,Action,,2/9/2024 13:38,,,,,,
+02 - Find Job,Sub Sheet,,2/9/2024 13:39,,,,,,
+,,,,,,,,,
+,,,,IN,Keywords,,,Text, Junior RPA Developer
+,,,,IN,Country,,,Text,united kingdom
+Search Job,Action,,2/9/2024 13:39,,,,,,
+,,,,,,,,,
+,,,,IN,Keywords,,,Text, Junior RPA Developer
+,,,,IN,Country,,,Text,united kingdom
+03 - Get Jobs,Sub Sheet,,2/9/2024 13:39,,,,,,
+,,,,,,,,,
+,,,,IN,Keywords,,,Text, Junior RPA Developer
+Get Jobs,Action,,2/9/2024 13:39,,,,,,
+,,,,,,,,,
+,,,,IN,Keywords,,,Text, Junior RPA Developer
+,,,,OUT,Result Collection,,,,
+,,,,OUT,Result Collection,Job Keyword,1,Text,
+,,,,OUT,Result Collection,Job Title,1,Text,
+,,,,OUT,Result Collection,Company Name,1,Text,
+,,,,OUT,Result Collection,Location,1,Text,
+,,,,OUT,Result Collection,Posted,1,Text,
+,,,,OUT,Result Collection,Applicants,1,Text,
+,,,,OUT,Result Collection,Salary,1,Text,
+,,,,OUT,Result Collection,Remote/Hybrid,1,Text,
+,,,,OUT,Result Collection,Job Type,1,Text,
+,,,,OUT,Result Collection,Job Level,1,Text,
+,,,,OUT,Result Collection,Company Size,1,Text,
+,,,,OUT,Result Collection,Company Type,1,Text,
+,,,,OUT,Result Collection,About Company,1,Text,
+,,,,OUT,Result Collection,Job Keyword,2,Text, Junior RPA Developer
+,,,,OUT,Result Collection,Job Title,2,Text,"Senior RPA Developer - UiPath, Celonis, ABBYY"
+,,,,OUT,Result Collection,Company Name,2,Text,Orbis
+,,,,OUT,Result Collection,Location,2,Text,United Kingdom
+,,,,OUT,Result Collection,Posted,2,Text,Reposted 5 months ago
+,,,,OUT,Result Collection,Applicants,2,Text,Over 100 applicants
+,,,,OUT,Result Collection,Salary,2,Text,"£50,000/yr - £75,000/yr "
+,,,,OUT,Result Collection,Remote/Hybrid,2,Text,"Remote
+"
+,,,,OUT,Result Collection,Job Type,2,Text, Full-time 
+,,,,OUT,Result Collection,Job Level,2,Text, Mid-Senior level
+,,,,OUT,Result Collection,Company Size,2,Text,51-200 employees
+,,,,OUT,Result Collection,Company Type,2,Text,Staffing and Recruiting
+,,,,OUT,Result Collection,About Company,2,Text,"About the jobSenior RPA Developer - RPA, UiPath, Celonis, ABBYY - Finance, P2P, O2CSalary: £50,0000 - £75,000 + Bonus and BenefitsLocation: UKOrbis have partnered with a leading international consultancy with over 100 clients, who look to design and implement next generation operating models, optimized processes and embed automation to find a Technical Lead (RPA, UiPath).This company has a primary focus on using innovation and tech to deliver more for each client. For the past 10 years they have bought experienced data tools and practitioners to help automate processes and drive transformation and real results delivered with assurance and high efficiency.You will be asked to help build automation, providing solutions with interesting and challenging projects. With a highly skilled team with an abundance of experience, in this highly driven, fast paced environment you will be working closely with stakeholders to ensure that solutions are met and built to fit all needs required.Key Responsibilities –Work with BA's to access and understand potential automation solutions to real life business problems.Provide clear, detailed documentation.Support existing automation's including, root cause analysis, clean-up, and bug fixes.Provide solutions and efficient models that can be translated to stakeholders.Work on high impact projects with high efficiencyContribute to design, build, implementation, testing and maintenance/support of automation solutions.Key Experience –2+ years’ experience in using and building with UiPath.Strong Understanding of best practices with operating models, optimized processes, and automationBeen involved in successful and high impact projects.Can translate models and results to stakeholders and clients.Don’t pass this opportunity if you want to join a leading consultancy with ample of growth opportunities and benefits. As well as work closely with stakeholders driving and automating successful projects!Please send a copy of your CV directly to this advertisement for immediate consideration."
+Append Results to Global Collection,Action,,2/9/2024 13:39,,,,,,
+,,,,,,,,,
+,,,,IN,Main Collection,,,,
+,,,,IN,Collection to Append,,,,
+,,,,IN,Main Collection,Job Keyword,1,Text,
+,,,,IN,Main Collection,Job Title,1,Text,
+,,,,IN,Main Collection,Company Name,1,Text,
+,,,,IN,Main Collection,Location,1,Text,
+,,,,IN,Main Collection,Posted,1,Text,
+,,,,IN,Main Collection,Applicants,1,Text,
+,,,,IN,Main Collection,Salary,1,Text,
+,,,,IN,Main Collection,Remote/Hybrid,1,Text,
+,,,,IN,Main Collection,Job Type,1,Text,
+,,,,IN,Main Collection,Job Level,1,Text,
+,,,,IN,Main Collection,Company Size,1,Text,
+,,,,IN,Main Collection,Company Type,1,Text,
+,,,,IN,Main Collection,About Company,1,Text,
+,,,,IN,Main Collection,Job Keyword,2,Text,
+,,,,IN,Main Collection,Job Title,2,Text,
+,,,,IN,Main Collection,Company Name,2,Text,
+,,,,IN,Main Collection,Location,2,Text,
+,,,,IN,Main Collection,Posted,2,Text,
+,,,,IN,Main Collection,Applicants,2,Text,
+,,,,IN,Main Collection,Salary,2,Text,
+,,,,IN,Main Collection,Remote/Hybrid,2,Text,
+,,,,IN,Main Collection,Job Type,2,Text,
+,,,,IN,Main Collection,Job Level,2,Text,
+,,,,IN,Main Collection,Company Size,2,Text,
+,,,,IN,Main Collection,Company Type,2,Text,
+,,,,IN,Main Collection,About Company,2,Text,
+,,,,IN,Main Collection,Job Keyword,3,Text,RPA Developer
+,,,,IN,Main Collection,Job Title,3,Text,"Senior RPA Developer - UiPath, Celonis, ABBYY"
+,,,,IN,Main Collection,Company Name,3,Text,Orbis
+,,,,IN,Main Collection,Location,3,Text,United Kingdom
+,,,,IN,Main Collection,Posted,3,Text,Reposted 5 months ago
+,,,,IN,Main Collection,Applicants,3,Text,Over 100 applicants
+,,,,IN,Main Collection,Salary,3,Text,"£50,000/yr - £75,000/yr "
+,,,,IN,Main Collection,Remote/Hybrid,3,Text,"Remote
+"
+,,,,IN,Main Collection,Job Type,3,Text, Full-time 
+,,,,IN,Main Collection,Job Level,3,Text, Mid-Senior level
+,,,,IN,Main Collection,Company Size,3,Text,51-200 employees
+,,,,IN,Main Collection,Company Type,3,Text,Staffing and Recruiting
+,,,,IN,Main Collection,About Company,3,Text,"About the jobSenior RPA Developer - RPA, UiPath, Celonis, ABBYY - Finance, P2P, O2CSalary: £50,0000 - £75,000 + Bonus and BenefitsLocation: UKOrbis have partnered with a leading international consultancy with over 100 clients, who look to design and implement next generation operating models, optimized processes and embed automation to find a Technical Lead (RPA, UiPath).This company has a primary focus on using innovation and tech to deliver more for each client. For the past 10 years they have bought experienced data tools and practitioners to help automate processes and drive transformation and real results delivered with assurance and high efficiency.You will be asked to help build automation, providing solutions with interesting and challenging projects. With a highly skilled team with an abundance of experience, in this highly driven, fast paced environment you will be working closely with stakeholders to ensure that solutions are met and built to fit all needs required.Key Responsibilities –Work with BA's to access and understand potential automation solutions to real life business problems.Provide clear, detailed documentation.Support existing automation's including, root cause analysis, clean-up, and bug fixes.Provide solutions and efficient models that can be translated to stakeholders.Work on high impact projects with high efficiencyContribute to design, build, implementation, testing and maintenance/support of automation solutions.Key Experience –2+ years’ experience in using and building with UiPath.Strong Understanding of best practices with operating models, optimized processes, and automationBeen involved in successful and high impact projects.Can translate models and results to stakeholders and clients.Don’t pass this opportunity if you want to join a leading consultancy with ample of growth opportunities and benefits. As well as work closely with stakeholders driving and automating successful projects!Please send a copy of your CV directly to this advertisement for immediate consideration."
+,,,,IN,Main Collection,Job Keyword,4,Text,RPA Developer
+,,,,IN,Main Collection,Job Title,4,Text,Senior RPA Developer - CRM
+,,,,IN,Main Collection,Company Name,4,Text,Hargreaves Lansdown
+,,,,IN,Main Collection,Location,4,Text,"Bristol, England, United Kingdom"
+,,,,IN,Main Collection,Posted,4,Text,3 days ago
+,,,,IN,Main Collection,Applicants,4,Text,56 applicants
+,,,,IN,Main Collection,Salary,4,Text,Not Provided
+,,,,IN,Main Collection,Remote/Hybrid,4,Text,"Remote
+"
+,,,,IN,Main Collection,Job Type,4,Text, Full-time 
+,,,,IN,Main Collection,Job Level,4,Text, Mid-Senior level
+,,,,IN,Main Collection,Company Size,4,Text,"1,001-5,000 employees"
+,,,,IN,Main Collection,Company Type,4,Text,Financial Services
+,,,,IN,Main Collection,About Company,4,Text,"About the jobExcited to grow your career?Our purpose is to empower people to save and invest with confidence. We are looking for great people to join us, so please come and invest in YOUR future at HL. About the role Salary: Up to £65,000 dependent on experience We are looking for talented people to join our CRM team as we embark upon our RPA journey. If you are someone with a wealth of RPA experience and want to work on a green field implementation, then we could have a role for you. This is an opportunity to join the UK's number one investment services company, looking after over £120 billion in assets on behalf of 1.8 million UK investors. We are a secure, FTSE 250 company, based in the heart of Bristol now with over 2,700 people. This is your chance to genuinely stamp your mark on one of the UK's most innovative and digital-focused businesses. You'll be given the support and opportunity to grow your career whilst additionally receiving a personal development budget to further build on your knowledge.  What you'll be doingParticipate in the full application life cycle - design, development, testing, and deploymentWork with technical teams and architects to finalise architectural specifications - and create solution and integration designsSetting up, testing and monitoring automated workflows to ensure that business processes function at optimum efficiency without risk of errorMonitoring and maintaining automation post-implementation and resolving any potential issues to ensure smooth business operationsAssist in identifying, troubleshooting, and resolving defects encountered during various stages of project delivery, including during the deployment and implementation of the solution in production environmentsProduce project documentation, including functional and technical designsMaintain standards and best practices and educate our teamMentor developers, while learning from othersCultivate strong working relationships both within working squad and in HL as a whole  About youPossess excellent problem-solving skillsHave excellent written and verbal communicationGreat attention to detailMastery of Automation tools, such as Mulesoft RPA, UiPath, Blue Prism and/or Automation Anywhere  Interview process2 stage interview process, 1 informal chat, 1 technical / competency focused interview.  Working ScheduleStandard Mon - Fri, 09:00 - 17:30 (we are however very flexible on working schedule so please do reach out with any requirements)  Why us?Here at HL, we're the UK's number 1 investment platform for private investors, based in Bristol. For more than 40 years we've helped investors save time, tax and money on their investments. To achieve our mission, we believe we have a workplace like no other, with constant learning, dynamic teams, and a great ethos. We're steered by core values that promote service, quality, innovation, and opportunity in everything we do. What's on offer?Discretionary annual bonus &amp; annual pay review25* days holiday plus bank holidays and 1-day additional Christmas closure timeOption to purchase an additional 5 days holiday per yearFlexible working options available, including hybrid workingPension scheme up to 11% employer contributionSharesave scheme - have a real stake in HL's futureIncome Protection &amp; Life insurance (4 x salary core level of cover)Health care cash plans - including optical, dental, and out patientcareHelp@hand and an Employee Assistance ProgrammeGympass - gym memberships and wellbeing apps availableVariety of travel to work schemes with free bike storage and shower facilitiesAn inhouse barista serving subsidised coffee and snacksJoin HL's sports, I&amp;D networks and volunteering groups (two paid volunteering days per year)LifeWorks Discounts on services, restaurants and retailers* up to 30 days depending on role level &amp; increasing with length of service  We know that sometimes people can be put off applying for a job if they don't tick every box. If you're excited about working for us and have most of the skills or experience we're looking for, please go ahead and apply. We'd love to hear from you! Hargreaves Lansdown is an inclusive employer that values diversity in its workforce. We encourage applications from all individuals without regard to race, religion, gender, sexual orientation, national origin, disability or age. This role may also be available on a flexible working or part time basis - please ask the Recruitment &amp; Onboarding team for more information. Please note, we are unable to provide employment sponsorship to candidates."
+,,,,IN,Collection to Append,Job Keyword,5,Text,
+,,,,IN,Collection to Append,Job Title,5,Text,
+,,,,IN,Collection to Append,Company Name,5,Text,
+,,,,IN,Collection to Append,Location,5,Text,
+,,,,IN,Collection to Append,Posted,5,Text,
+,,,,IN,Collection to Append,Applicants,5,Text,
+,,,,IN,Collection to Append,Salary,5,Text,
+,,,,IN,Collection to Append,Remote/Hybrid,5,Text,
+,,,,IN,Collection to Append,Job Type,5,Text,
+,,,,IN,Collection to Append,Job Level,5,Text,
+,,,,IN,Collection to Append,Company Size,5,Text,
+,,,,IN,Collection to Append,Company Type,5,Text,
+,,,,IN,Collection to Append,About Company,5,Text,
+,,,,IN,Collection to Append,Job Keyword,6,Text, Junior RPA Developer
+,,,,IN,Collection to Append,Job Title,6,Text,"Senior RPA Developer - UiPath, Celonis, ABBYY"
+,,,,IN,Collection to Append,Company Name,6,Text,Orbis
+,,,,IN,Collection to Append,Location,6,Text,United Kingdom
+,,,,IN,Collection to Append,Posted,6,Text,Reposted 5 months ago
+,,,,IN,Collection to Append,Applicants,6,Text,Over 100 applicants
+,,,,IN,Collection to Append,Salary,6,Text,"£50,000/yr - £75,000/yr "
+,,,,IN,Collection to Append,Remote/Hybrid,6,Text,"Remote
+"
+,,,,IN,Collection to Append,Job Type,6,Text, Full-time 
+,,,,IN,Collection to Append,Job Level,6,Text, Mid-Senior level
+,,,,IN,Collection to Append,Company Size,6,Text,51-200 employees
+,,,,IN,Collection to Append,Company Type,6,Text,Staffing and Recruiting
+,,,,IN,Collection to Append,About Company,6,Text,"About the jobSenior RPA Developer - RPA, UiPath, Celonis, ABBYY - Finance, P2P, O2CSalary: £50,0000 - £75,000 + Bonus and BenefitsLocation: UKOrbis have partnered with a leading international consultancy with over 100 clients, who look to design and implement next generation operating models, optimized processes and embed automation to find a Technical Lead (RPA, UiPath).This company has a primary focus on using innovation and tech to deliver more for each client. For the past 10 years they have bought experienced data tools and practitioners to help automate processes and drive transformation and real results delivered with assurance and high efficiency.You will be asked to help build automation, providing solutions with interesting and challenging projects. With a highly skilled team with an abundance of experience, in this highly driven, fast paced environment you will be working closely with stakeholders to ensure that solutions are met and built to fit all needs required.Key Responsibilities –Work with BA's to access and understand potential automation solutions to real life business problems.Provide clear, detailed documentation.Support existing automation's including, root cause analysis, clean-up, and bug fixes.Provide solutions and efficient models that can be translated to stakeholders.Work on high impact projects with high efficiencyContribute to design, build, implementation, testing and maintenance/support of automation solutions.Key Experience –2+ years’ experience in using and building with UiPath.Strong Understanding of best practices with operating models, optimized processes, and automationBeen involved in successful and high impact projects.Can translate models and results to stakeholders and clients.Don’t pass this opportunity if you want to join a leading consultancy with ample of growth opportunities and benefits. As well as work closely with stakeholders driving and automating successful projects!Please send a copy of your CV directly to this advertisement for immediate consideration."
+,,,,OUT,Combined Collection,,,,
+,,,,OUT,Combined Collection,Job Keyword,1,Text,
+,,,,OUT,Combined Collection,Job Title,1,Text,
+,,,,OUT,Combined Collection,Company Name,1,Text,
+,,,,OUT,Combined Collection,Location,1,Text,
+,,,,OUT,Combined Collection,Posted,1,Text,
+,,,,OUT,Combined Collection,Applicants,1,Text,
+,,,,OUT,Combined Collection,Salary,1,Text,
+,,,,OUT,Combined Collection,Remote/Hybrid,1,Text,
+,,,,OUT,Combined Collection,Job Type,1,Text,
+,,,,OUT,Combined Collection,Job Level,1,Text,
+,,,,OUT,Combined Collection,Company Size,1,Text,
+,,,,OUT,Combined Collection,Company Type,1,Text,
+,,,,OUT,Combined Collection,About Company,1,Text,
+,,,,OUT,Combined Collection,Job Keyword,2,Text,
+,,,,OUT,Combined Collection,Job Title,2,Text,
+,,,,OUT,Combined Collection,Company Name,2,Text,
+,,,,OUT,Combined Collection,Location,2,Text,
+,,,,OUT,Combined Collection,Posted,2,Text,
+,,,,OUT,Combined Collection,Applicants,2,Text,
+,,,,OUT,Combined Collection,Salary,2,Text,
+,,,,OUT,Combined Collection,Remote/Hybrid,2,Text,
+,,,,OUT,Combined Collection,Job Type,2,Text,
+,,,,OUT,Combined Collection,Job Level,2,Text,
+,,,,OUT,Combined Collection,Company Size,2,Text,
+,,,,OUT,Combined Collection,Company Type,2,Text,
+,,,,OUT,Combined Collection,About Company,2,Text,
+,,,,OUT,Combined Collection,Job Keyword,3,Text,RPA Developer
+,,,,OUT,Combined Collection,Job Title,3,Text,"Senior RPA Developer - UiPath, Celonis, ABBYY"
+,,,,OUT,Combined Collection,Company Name,3,Text,Orbis
+,,,,OUT,Combined Collection,Location,3,Text,United Kingdom
+,,,,OUT,Combined Collection,Posted,3,Text,Reposted 5 months ago
+,,,,OUT,Combined Collection,Applicants,3,Text,Over 100 applicants
+,,,,OUT,Combined Collection,Salary,3,Text,"£50,000/yr - £75,000/yr "
+,,,,OUT,Combined Collection,Remote/Hybrid,3,Text,"Remote
+"
+,,,,OUT,Combined Collection,Job Type,3,Text, Full-time 
+,,,,OUT,Combined Collection,Job Level,3,Text, Mid-Senior level
+,,,,OUT,Combined Collection,Company Size,3,Text,51-200 employees
+,,,,OUT,Combined Collection,Company Type,3,Text,Staffing and Recruiting
+,,,,OUT,Combined Collection,About Company,3,Text,"About the jobSenior RPA Developer - RPA, UiPath, Celonis, ABBYY - Finance, P2P, O2CSalary: £50,0000 - £75,000 + Bonus and BenefitsLocation: UKOrbis have partnered with a leading international consultancy with over 100 clients, who look to design and implement next generation operating models, optimized processes and embed automation to find a Technical Lead (RPA, UiPath).This company has a primary focus on using innovation and tech to deliver more for each client. For the past 10 years they have bought experienced data tools and practitioners to help automate processes and drive transformation and real results delivered with assurance and high efficiency.You will be asked to help build automation, providing solutions with interesting and challenging projects. With a highly skilled team with an abundance of experience, in this highly driven, fast paced environment you will be working closely with stakeholders to ensure that solutions are met and built to fit all needs required.Key Responsibilities –Work with BA's to access and understand potential automation solutions to real life business problems.Provide clear, detailed documentation.Support existing automation's including, root cause analysis, clean-up, and bug fixes.Provide solutions and efficient models that can be translated to stakeholders.Work on high impact projects with high efficiencyContribute to design, build, implementation, testing and maintenance/support of automation solutions.Key Experience –2+ years’ experience in using and building with UiPath.Strong Understanding of best practices with operating models, optimized processes, and automationBeen involved in successful and high impact projects.Can translate models and results to stakeholders and clients.Don’t pass this opportunity if you want to join a leading consultancy with ample of growth opportunities and benefits. As well as work closely with stakeholders driving and automating successful projects!Please send a copy of your CV directly to this advertisement for immediate consideration."
+,,,,OUT,Combined Collection,Job Keyword,4,Text,RPA Developer
+,,,,OUT,Combined Collection,Job Title,4,Text,Senior RPA Developer - CRM
+,,,,OUT,Combined Collection,Company Name,4,Text,Hargreaves Lansdown
+,,,,OUT,Combined Collection,Location,4,Text,"Bristol, England, United Kingdom"
+,,,,OUT,Combined Collection,Posted,4,Text,3 days ago
+,,,,OUT,Combined Collection,Applicants,4,Text,56 applicants
+,,,,OUT,Combined Collection,Salary,4,Text,Not Provided
+,,,,OUT,Combined Collection,Remote/Hybrid,4,Text,"Remote
+"
+,,,,OUT,Combined Collection,Job Type,4,Text, Full-time 
+,,,,OUT,Combined Collection,Job Level,4,Text, Mid-Senior level
+,,,,OUT,Combined Collection,Company Size,4,Text,"1,001-5,000 employees"
+,,,,OUT,Combined Collection,Company Type,4,Text,Financial Services
+,,,,OUT,Combined Collection,About Company,4,Text,"About the jobExcited to grow your career?Our purpose is to empower people to save and invest with confidence. We are looking for great people to join us, so please come and invest in YOUR future at HL. About the role Salary: Up to £65,000 dependent on experience We are looking for talented people to join our CRM team as we embark upon our RPA journey. If you are someone with a wealth of RPA experience and want to work on a green field implementation, then we could have a role for you. This is an opportunity to join the UK's number one investment services company, looking after over £120 billion in assets on behalf of 1.8 million UK investors. We are a secure, FTSE 250 company, based in the heart of Bristol now with over 2,700 people. This is your chance to genuinely stamp your mark on one of the UK's most innovative and digital-focused businesses. You'll be given the support and opportunity to grow your career whilst additionally receiving a personal development budget to further build on your knowledge.  What you'll be doingParticipate in the full application life cycle - design, development, testing, and deploymentWork with technical teams and architects to finalise architectural specifications - and create solution and integration designsSetting up, testing and monitoring automated workflows to ensure that business processes function at optimum efficiency without risk of errorMonitoring and maintaining automation post-implementation and resolving any potential issues to ensure smooth business operationsAssist in identifying, troubleshooting, and resolving defects encountered during various stages of project delivery, including during the deployment and implementation of the solution in production environmentsProduce project documentation, including functional and technical designsMaintain standards and best practices and educate our teamMentor developers, while learning from othersCultivate strong working relationships both within working squad and in HL as a whole  About youPossess excellent problem-solving skillsHave excellent written and verbal communicationGreat attention to detailMastery of Automation tools, such as Mulesoft RPA, UiPath, Blue Prism and/or Automation Anywhere  Interview process2 stage interview process, 1 informal chat, 1 technical / competency focused interview.  Working ScheduleStandard Mon - Fri, 09:00 - 17:30 (we are however very flexible on working schedule so please do reach out with any requirements)  Why us?Here at HL, we're the UK's number 1 investment platform for private investors, based in Bristol. For more than 40 years we've helped investors save time, tax and money on their investments. To achieve our mission, we believe we have a workplace like no other, with constant learning, dynamic teams, and a great ethos. We're steered by core values that promote service, quality, innovation, and opportunity in everything we do. What's on offer?Discretionary annual bonus &amp; annual pay review25* days holiday plus bank holidays and 1-day additional Christmas closure timeOption to purchase an additional 5 days holiday per yearFlexible working options available, including hybrid workingPension scheme up to 11% employer contributionSharesave scheme - have a real stake in HL's futureIncome Protection &amp; Life insurance (4 x salary core level of cover)Health care cash plans - including optical, dental, and out patientcareHelp@hand and an Employee Assistance ProgrammeGympass - gym memberships and wellbeing apps availableVariety of travel to work schemes with free bike storage and shower facilitiesAn inhouse barista serving subsidised coffee and snacksJoin HL's sports, I&amp;D networks and volunteering groups (two paid volunteering days per year)LifeWorks Discounts on services, restaurants and retailers* up to 30 days depending on role level &amp; increasing with length of service  We know that sometimes people can be put off applying for a job if they don't tick every box. If you're excited about working for us and have most of the skills or experience we're looking for, please go ahead and apply. We'd love to hear from you! Hargreaves Lansdown is an inclusive employer that values diversity in its workforce. We encourage applications from all individuals without regard to race, religion, gender, sexual orientation, national origin, disability or age. This role may also be available on a flexible working or part time basis - please ask the Recruitment &amp; Onboarding team for more information. Please note, we are unable to provide employment sponsorship to candidates."
+,,,,OUT,Combined Collection,Job Keyword,5,Text,
+,,,,OUT,Combined Collection,Job Title,5,Text,
+,,,,OUT,Combined Collection,Company Name,5,Text,
+,,,,OUT,Combined Collection,Location,5,Text,
+,,,,OUT,Combined Collection,Posted,5,Text,
+,,,,OUT,Combined Collection,Applicants,5,Text,
+,,,,OUT,Combined Collection,Salary,5,Text,
+,,,,OUT,Combined Collection,Remote/Hybrid,5,Text,
+,,,,OUT,Combined Collection,Job Type,5,Text,
+,,,,OUT,Combined Collection,Job Level,5,Text,
+,,,,OUT,Combined Collection,Company Size,5,Text,
+,,,,OUT,Combined Collection,Company Type,5,Text,
+,,,,OUT,Combined Collection,About Company,5,Text,
+,,,,OUT,Combined Collection,Job Keyword,6,Text, Junior RPA Developer
+,,,,OUT,Combined Collection,Job Title,6,Text,"Senior RPA Developer - UiPath, Celonis, ABBYY"
+,,,,OUT,Combined Collection,Company Name,6,Text,Orbis
+,,,,OUT,Combined Collection,Location,6,Text,United Kingdom
+,,,,OUT,Combined Collection,Posted,6,Text,Reposted 5 months ago
+,,,,OUT,Combined Collection,Applicants,6,Text,Over 100 applicants
+,,,,OUT,Combined Collection,Salary,6,Text,"£50,000/yr - £75,000/yr "
+,,,,OUT,Combined Collection,Remote/Hybrid,6,Text,"Remote
+"
+,,,,OUT,Combined Collection,Job Type,6,Text, Full-time 
+,,,,OUT,Combined Collection,Job Level,6,Text, Mid-Senior level
+,,,,OUT,Combined Collection,Company Size,6,Text,51-200 employees
+,,,,OUT,Combined Collection,Company Type,6,Text,Staffing and Recruiting
+,,,,OUT,Combined Collection,About Company,6,Text,"About the jobSenior RPA Developer - RPA, UiPath, Celonis, ABBYY - Finance, P2P, O2CSalary: £50,0000 - £75,000 + Bonus and BenefitsLocation: UKOrbis have partnered with a leading international consultancy with over 100 clients, who look to design and implement next generation operating models, optimized processes and embed automation to find a Technical Lead (RPA, UiPath).This company has a primary focus on using innovation and tech to deliver more for each client. For the past 10 years they have bought experienced data tools and practitioners to help automate processes and drive transformation and real results delivered with assurance and high efficiency.You will be asked to help build automation, providing solutions with interesting and challenging projects. With a highly skilled team with an abundance of experience, in this highly driven, fast paced environment you will be working closely with stakeholders to ensure that solutions are met and built to fit all needs required.Key Responsibilities –Work with BA's to access and understand potential automation solutions to real life business problems.Provide clear, detailed documentation.Support existing automation's including, root cause analysis, clean-up, and bug fixes.Provide solutions and efficient models that can be translated to stakeholders.Work on high impact projects with high efficiencyContribute to design, build, implementation, testing and maintenance/support of automation solutions.Key Experience –2+ years’ experience in using and building with UiPath.Strong Understanding of best practices with operating models, optimized processes, and automationBeen involved in successful and high impact projects.Can translate models and results to stakeholders and clients.Don’t pass this opportunity if you want to join a leading consultancy with ample of growth opportunities and benefits. As well as work closely with stakeholders driving and automating successful projects!Please send a copy of your CV directly to this advertisement for immediate consideration."
+Mark Item As Completed,Sub Sheet,,2/9/2024 13:39,,,,,,
+Set Tag,Action,,2/9/2024 13:39,,,,,,
+,,,,,,,,,
+,,,,IN,Item ID,,,Text,7deca756-d4b6-4147-bc0c-9df1ce0c98a4
+,,,,IN,Tag,,,Text,Completed
+Mark Completed,Action,,2/9/2024 13:39,,,,,,
+,,,,,,,,,
+,,,,IN,Item ID,,,Text,7deca756-d4b6-4147-bc0c-9df1ce0c98a4
+Reset Consecutive Exception Indicators,Multiple Calculation,,2/9/2024 13:39,,,,,,
+,,,,,,,,,
+,,,,OUT,step1,,,Text,
+,,,,OUT,step2,,,Number,0
+Reset Global Data,Sub Sheet,,2/9/2024 13:39,,,,,,
+Exception Data,Multiple Calculation,,2/9/2024 13:39,,,,,,
+,,,,,,,,,
+,,,,OUT,step1,,,Text,
+,,,,OUT,step2,,,Text,
+Write to Excel&Email,Sub Sheet,,2/9/2024 13:39,,,,,,
+,,,,,,,,,
+,,,,IN,Country,,,Text,united kingdom
+,,,,IN,File Path,,,Text,E:\Documents\BluePrism\LinkedInJobFinder\
+,,,,IN,Email,,,Text,fvtvlnight@gmail.com
+Start,Start,,2/9/2024 13:39,,,,,,
+,,,,,,,,,
+,,,,IN,Country,,,Text,united kingdom
+,,,,IN,File Path,,,Text,E:\Documents\BluePrism\LinkedInJobFinder\
+,,,,IN,Email,,,Text,fvtvlnight@gmail.com
+Remove Empty Rows,Action,,2/9/2024 13:39,,,,,,
+,,,,,,,,,
+,,,,IN,Collection In,,,,
+,,,,IN,Collection In,Job Keyword,1,Text,
+,,,,IN,Collection In,Job Title,1,Text,
+,,,,IN,Collection In,Company Name,1,Text,
+,,,,IN,Collection In,Location,1,Text,
+,,,,IN,Collection In,Posted,1,Text,
+,,,,IN,Collection In,Applicants,1,Text,
+,,,,IN,Collection In,Salary,1,Text,
+,,,,IN,Collection In,Remote/Hybrid,1,Text,
+,,,,IN,Collection In,Job Type,1,Text,
+,,,,IN,Collection In,Job Level,1,Text,
+,,,,IN,Collection In,Company Size,1,Text,
+,,,,IN,Collection In,Company Type,1,Text,
+,,,,IN,Collection In,About Company,1,Text,
+,,,,IN,Collection In,Job Keyword,2,Text,
+,,,,IN,Collection In,Job Title,2,Text,
+,,,,IN,Collection In,Company Name,2,Text,
+,,,,IN,Collection In,Location,2,Text,
+,,,,IN,Collection In,Posted,2,Text,
+,,,,IN,Collection In,Applicants,2,Text,
+,,,,IN,Collection In,Salary,2,Text,
+,,,,IN,Collection In,Remote/Hybrid,2,Text,
+,,,,IN,Collection In,Job Type,2,Text,
+,,,,IN,Collection In,Job Level,2,Text,
+,,,,IN,Collection In,Company Size,2,Text,
+,,,,IN,Collection In,Company Type,2,Text,
+,,,,IN,Collection In,About Company,2,Text,
+,,,,IN,Collection In,Job Keyword,3,Text,RPA Developer
+,,,,IN,Collection In,Job Title,3,Text,"Senior RPA Developer - UiPath, Celonis, ABBYY"
+,,,,IN,Collection In,Company Name,3,Text,Orbis
+,,,,IN,Collection In,Location,3,Text,United Kingdom
+,,,,IN,Collection In,Posted,3,Text,Reposted 5 months ago
+,,,,IN,Collection In,Applicants,3,Text,Over 100 applicants
+,,,,IN,Collection In,Salary,3,Text,"£50,000/yr - £75,000/yr "
+,,,,IN,Collection In,Remote/Hybrid,3,Text,"Remote
+"
+,,,,IN,Collection In,Job Type,3,Text, Full-time 
+,,,,IN,Collection In,Job Level,3,Text, Mid-Senior level
+,,,,IN,Collection In,Company Size,3,Text,51-200 employees
+,,,,IN,Collection In,Company Type,3,Text,Staffing and Recruiting
+,,,,IN,Collection In,About Company,3,Text,"About the jobSenior RPA Developer - RPA, UiPath, Celonis, ABBYY - Finance, P2P, O2CSalary: £50,0000 - £75,000 + Bonus and BenefitsLocation: UKOrbis have partnered with a leading international consultancy with over 100 clients, who look to design and implement next generation operating models, optimized processes and embed automation to find a Technical Lead (RPA, UiPath).This company has a primary focus on using innovation and tech to deliver more for each client. For the past 10 years they have bought experienced data tools and practitioners to help automate processes and drive transformation and real results delivered with assurance and high efficiency.You will be asked to help build automation, providing solutions with interesting and challenging projects. With a highly skilled team with an abundance of experience, in this highly driven, fast paced environment you will be working closely with stakeholders to ensure that solutions are met and built to fit all needs required.Key Responsibilities –Work with BA's to access and understand potential automation solutions to real life business problems.Provide clear, detailed documentation.Support existing automation's including, root cause analysis, clean-up, and bug fixes.Provide solutions and efficient models that can be translated to stakeholders.Work on high impact projects with high efficiencyContribute to design, build, implementation, testing and maintenance/support of automation solutions.Key Experience –2+ years’ experience in using and building with UiPath.Strong Understanding of best practices with operating models, optimized processes, and automationBeen involved in successful and high impact projects.Can translate models and results to stakeholders and clients.Don’t pass this opportunity if you want to join a leading consultancy with ample of growth opportunities and benefits. As well as work closely with stakeholders driving and automating successful projects!Please send a copy of your CV directly to this advertisement for immediate consideration."
+,,,,IN,Collection In,Job Keyword,4,Text,RPA Developer
+,,,,IN,Collection In,Job Title,4,Text,Senior RPA Developer - CRM
+,,,,IN,Collection In,Company Name,4,Text,Hargreaves Lansdown
+,,,,IN,Collection In,Location,4,Text,"Bristol, England, United Kingdom"
+,,,,IN,Collection In,Posted,4,Text,3 days ago
+,,,,IN,Collection In,Applicants,4,Text,56 applicants
+,,,,IN,Collection In,Salary,4,Text,Not Provided
+,,,,IN,Collection In,Remote/Hybrid,4,Text,"Remote
+"
+,,,,IN,Collection In,Job Type,4,Text, Full-time 
+,,,,IN,Collection In,Job Level,4,Text, Mid-Senior level
+,,,,IN,Collection In,Company Size,4,Text,"1,001-5,000 employees"
+,,,,IN,Collection In,Company Type,4,Text,Financial Services
+,,,,IN,Collection In,About Company,4,Text,"About the jobExcited to grow your career?Our purpose is to empower people to save and invest with confidence. We are looking for great people to join us, so please come and invest in YOUR future at HL. About the role Salary: Up to £65,000 dependent on experience We are looking for talented people to join our CRM team as we embark upon our RPA journey. If you are someone with a wealth of RPA experience and want to work on a green field implementation, then we could have a role for you. This is an opportunity to join the UK's number one investment services company, looking after over £120 billion in assets on behalf of 1.8 million UK investors. We are a secure, FTSE 250 company, based in the heart of Bristol now with over 2,700 people. This is your chance to genuinely stamp your mark on one of the UK's most innovative and digital-focused businesses. You'll be given the support and opportunity to grow your career whilst additionally receiving a personal development budget to further build on your knowledge.  What you'll be doingParticipate in the full application life cycle - design, development, testing, and deploymentWork with technical teams and architects to finalise architectural specifications - and create solution and integration designsSetting up, testing and monitoring automated workflows to ensure that business processes function at optimum efficiency without risk of errorMonitoring and maintaining automation post-implementation and resolving any potential issues to ensure smooth business operationsAssist in identifying, troubleshooting, and resolving defects encountered during various stages of project delivery, including during the deployment and implementation of the solution in production environmentsProduce project documentation, including functional and technical designsMaintain standards and best practices and educate our teamMentor developers, while learning from othersCultivate strong working relationships both within working squad and in HL as a whole  About youPossess excellent problem-solving skillsHave excellent written and verbal communicationGreat attention to detailMastery of Automation tools, such as Mulesoft RPA, UiPath, Blue Prism and/or Automation Anywhere  Interview process2 stage interview process, 1 informal chat, 1 technical / competency focused interview.  Working ScheduleStandard Mon - Fri, 09:00 - 17:30 (we are however very flexible on working schedule so please do reach out with any requirements)  Why us?Here at HL, we're the UK's number 1 investment platform for private investors, based in Bristol. For more than 40 years we've helped investors save time, tax and money on their investments. To achieve our mission, we believe we have a workplace like no other, with constant learning, dynamic teams, and a great ethos. We're steered by core values that promote service, quality, innovation, and opportunity in everything we do. What's on offer?Discretionary annual bonus &amp; annual pay review25* days holiday plus bank holidays and 1-day additional Christmas closure timeOption to purchase an additional 5 days holiday per yearFlexible working options available, including hybrid workingPension scheme up to 11% employer contributionSharesave scheme - have a real stake in HL's futureIncome Protection &amp; Life insurance (4 x salary core level of cover)Health care cash plans - including optical, dental, and out patientcareHelp@hand and an Employee Assistance ProgrammeGympass - gym memberships and wellbeing apps availableVariety of travel to work schemes with free bike storage and shower facilitiesAn inhouse barista serving subsidised coffee and snacksJoin HL's sports, I&amp;D networks and volunteering groups (two paid volunteering days per year)LifeWorks Discounts on services, restaurants and retailers* up to 30 days depending on role level &amp; increasing with length of service  We know that sometimes people can be put off applying for a job if they don't tick every box. If you're excited about working for us and have most of the skills or experience we're looking for, please go ahead and apply. We'd love to hear from you! Hargreaves Lansdown is an inclusive employer that values diversity in its workforce. We encourage applications from all individuals without regard to race, religion, gender, sexual orientation, national origin, disability or age. This role may also be available on a flexible working or part time basis - please ask the Recruitment &amp; Onboarding team for more information. Please note, we are unable to provide employment sponsorship to candidates."
+,,,,IN,Collection In,Job Keyword,5,Text,
+,,,,IN,Collection In,Job Title,5,Text,
+,,,,IN,Collection In,Company Name,5,Text,
+,,,,IN,Collection In,Location,5,Text,
+,,,,IN,Collection In,Posted,5,Text,
+,,,,IN,Collection In,Applicants,5,Text,
+,,,,IN,Collection In,Salary,5,Text,
+,,,,IN,Collection In,Remote/Hybrid,5,Text,
+,,,,IN,Collection In,Job Type,5,Text,
+,,,,IN,Collection In,Job Level,5,Text,
+,,,,IN,Collection In,Company Size,5,Text,
+,,,,IN,Collection In,Company Type,5,Text,
+,,,,IN,Collection In,About Company,5,Text,
+,,,,IN,Collection In,Job Keyword,6,Text, Junior RPA Developer
+,,,,IN,Collection In,Job Title,6,Text,"Senior RPA Developer - UiPath, Celonis, ABBYY"
+,,,,IN,Collection In,Company Name,6,Text,Orbis
+,,,,IN,Collection In,Location,6,Text,United Kingdom
+,,,,IN,Collection In,Posted,6,Text,Reposted 5 months ago
+,,,,IN,Collection In,Applicants,6,Text,Over 100 applicants
+,,,,IN,Collection In,Salary,6,Text,"£50,000/yr - £75,000/yr "
+,,,,IN,Collection In,Remote/Hybrid,6,Text,"Remote
+"
+,,,,IN,Collection In,Job Type,6,Text, Full-time 
+,,,,IN,Collection In,Job Level,6,Text, Mid-Senior level
+,,,,IN,Collection In,Company Size,6,Text,51-200 employees
+,,,,IN,Collection In,Company Type,6,Text,Staffing and Recruiting
+,,,,IN,Collection In,About Company,6,Text,"About the jobSenior RPA Developer - RPA, UiPath, Celonis, ABBYY - Finance, P2P, O2CSalary: £50,0000 - £75,000 + Bonus and BenefitsLocation: UKOrbis have partnered with a leading international consultancy with over 100 clients, who look to design and implement next generation operating models, optimized processes and embed automation to find a Technical Lead (RPA, UiPath).This company has a primary focus on using innovation and tech to deliver more for each client. For the past 10 years they have bought experienced data tools and practitioners to help automate processes and drive transformation and real results delivered with assurance and high efficiency.You will be asked to help build automation, providing solutions with interesting and challenging projects. With a highly skilled team with an abundance of experience, in this highly driven, fast paced environment you will be working closely with stakeholders to ensure that solutions are met and built to fit all needs required.Key Responsibilities –Work with BA's to access and understand potential automation solutions to real life business problems.Provide clear, detailed documentation.Support existing automation's including, root cause analysis, clean-up, and bug fixes.Provide solutions and efficient models that can be translated to stakeholders.Work on high impact projects with high efficiencyContribute to design, build, implementation, testing and maintenance/support of automation solutions.Key Experience –2+ years’ experience in using and building with UiPath.Strong Understanding of best practices with operating models, optimized processes, and automationBeen involved in successful and high impact projects.Can translate models and results to stakeholders and clients.Don’t pass this opportunity if you want to join a leading consultancy with ample of growth opportunities and benefits. As well as work closely with stakeholders driving and automating successful projects!Please send a copy of your CV directly to this advertisement for immediate consideration."
+,,,,OUT,Collection Out,,,,
+,,,,OUT,Collection Out,Job Keyword,1,Text,RPA Developer
+,,,,OUT,Collection Out,Job Title,1,Text,"Senior RPA Developer - UiPath, Celonis, ABBYY"
+,,,,OUT,Collection Out,Company Name,1,Text,Orbis
+,,,,OUT,Collection Out,Location,1,Text,United Kingdom
+,,,,OUT,Collection Out,Posted,1,Text,Reposted 5 months ago
+,,,,OUT,Collection Out,Applicants,1,Text,Over 100 applicants
+,,,,OUT,Collection Out,Salary,1,Text,"£50,000/yr - £75,000/yr "
+,,,,OUT,Collection Out,Remote/Hybrid,1,Text,"Remote
+"
+,,,,OUT,Collection Out,Job Type,1,Text, Full-time 
+,,,,OUT,Collection Out,Job Level,1,Text, Mid-Senior level
+,,,,OUT,Collection Out,Company Size,1,Text,51-200 employees
+,,,,OUT,Collection Out,Company Type,1,Text,Staffing and Recruiting
+,,,,OUT,Collection Out,About Company,1,Text,"About the jobSenior RPA Developer - RPA, UiPath, Celonis, ABBYY - Finance, P2P, O2CSalary: £50,0000 - £75,000 + Bonus and BenefitsLocation: UKOrbis have partnered with a leading international consultancy with over 100 clients, who look to design and implement next generation operating models, optimized processes and embed automation to find a Technical Lead (RPA, UiPath).This company has a primary focus on using innovation and tech to deliver more for each client. For the past 10 years they have bought experienced data tools and practitioners to help automate processes and drive transformation and real results delivered with assurance and high efficiency.You will be asked to help build automation, providing solutions with interesting and challenging projects. With a highly skilled team with an abundance of experience, in this highly driven, fast paced environment you will be working closely with stakeholders to ensure that solutions are met and built to fit all needs required.Key Responsibilities –Work with BA's to access and understand potential automation solutions to real life business problems.Provide clear, detailed documentation.Support existing automation's including, root cause analysis, clean-up, and bug fixes.Provide solutions and efficient models that can be translated to stakeholders.Work on high impact projects with high efficiencyContribute to design, build, implementation, testing and maintenance/support of automation solutions.Key Experience –2+ years’ experience in using and building with UiPath.Strong Understanding of best practices with operating models, optimized processes, and automationBeen involved in successful and high impact projects.Can translate models and results to stakeholders and clients.Don’t pass this opportunity if you want to join a leading consultancy with ample of growth opportunities and benefits. As well as work closely with stakeholders driving and automating successful projects!Please send a copy of your CV directly to this advertisement for immediate consideration."
+,,,,OUT,Collection Out,Job Keyword,2,Text,RPA Developer
+,,,,OUT,Collection Out,Job Title,2,Text,Senior RPA Developer - CRM
+,,,,OUT,Collection Out,Company Name,2,Text,Hargreaves Lansdown
+,,,,OUT,Collection Out,Location,2,Text,"Bristol, England, United Kingdom"
+,,,,OUT,Collection Out,Posted,2,Text,3 days ago
+,,,,OUT,Collection Out,Applicants,2,Text,56 applicants
+,,,,OUT,Collection Out,Salary,2,Text,Not Provided
+,,,,OUT,Collection Out,Remote/Hybrid,2,Text,"Remote
+"
+,,,,OUT,Collection Out,Job Type,2,Text, Full-time 
+,,,,OUT,Collection Out,Job Level,2,Text, Mid-Senior level
+,,,,OUT,Collection Out,Company Size,2,Text,"1,001-5,000 employees"
+,,,,OUT,Collection Out,Company Type,2,Text,Financial Services
+,,,,OUT,Collection Out,About Company,2,Text,"About the jobExcited to grow your career?Our purpose is to empower people to save and invest with confidence. We are looking for great people to join us, so please come and invest in YOUR future at HL. About the role Salary: Up to £65,000 dependent on experience We are looking for talented people to join our CRM team as we embark upon our RPA journey. If you are someone with a wealth of RPA experience and want to work on a green field implementation, then we could have a role for you. This is an opportunity to join the UK's number one investment services company, looking after over £120 billion in assets on behalf of 1.8 million UK investors. We are a secure, FTSE 250 company, based in the heart of Bristol now with over 2,700 people. This is your chance to genuinely stamp your mark on one of the UK's most innovative and digital-focused businesses. You'll be given the support and opportunity to grow your career whilst additionally receiving a personal development budget to further build on your knowledge.  What you'll be doingParticipate in the full application life cycle - design, development, testing, and deploymentWork with technical teams and architects to finalise architectural specifications - and create solution and integration designsSetting up, testing and monitoring automated workflows to ensure that business processes function at optimum efficiency without risk of errorMonitoring and maintaining automation post-implementation and resolving any potential issues to ensure smooth business operationsAssist in identifying, troubleshooting, and resolving defects encountered during various stages of project delivery, including during the deployment and implementation of the solution in production environmentsProduce project documentation, including functional and technical designsMaintain standards and best practices and educate our teamMentor developers, while learning from othersCultivate strong working relationships both within working squad and in HL as a whole  About youPossess excellent problem-solving skillsHave excellent written and verbal communicationGreat attention to detailMastery of Automation tools, such as Mulesoft RPA, UiPath, Blue Prism and/or Automation Anywhere  Interview process2 stage interview process, 1 informal chat, 1 technical / competency focused interview.  Working ScheduleStandard Mon - Fri, 09:00 - 17:30 (we are however very flexible on working schedule so please do reach out with any requirements)  Why us?Here at HL, we're the UK's number 1 investment platform for private investors, based in Bristol. For more than 40 years we've helped investors save time, tax and money on their investments. To achieve our mission, we believe we have a workplace like no other, with constant learning, dynamic teams, and a great ethos. We're steered by core values that promote service, quality, innovation, and opportunity in everything we do. What's on offer?Discretionary annual bonus &amp; annual pay review25* days holiday plus bank holidays and 1-day additional Christmas closure timeOption to purchase an additional 5 days holiday per yearFlexible working options available, including hybrid workingPension scheme up to 11% employer contributionSharesave scheme - have a real stake in HL's futureIncome Protection &amp; Life insurance (4 x salary core level of cover)Health care cash plans - including optical, dental, and out patientcareHelp@hand and an Employee Assistance ProgrammeGympass - gym memberships and wellbeing apps availableVariety of travel to work schemes with free bike storage and shower facilitiesAn inhouse barista serving subsidised coffee and snacksJoin HL's sports, I&amp;D networks and volunteering groups (two paid volunteering days per year)LifeWorks Discounts on services, restaurants and retailers* up to 30 days depending on role level &amp; increasing with length of service  We know that sometimes people can be put off applying for a job if they don't tick every box. If you're excited about working for us and have most of the skills or experience we're looking for, please go ahead and apply. We'd love to hear from you! Hargreaves Lansdown is an inclusive employer that values diversity in its workforce. We encourage applications from all individuals without regard to race, religion, gender, sexual orientation, national origin, disability or age. This role may also be available on a flexible working or part time basis - please ask the Recruitment &amp; Onboarding team for more information. Please note, we are unable to provide employment sponsorship to candidates."
+,,,,OUT,Collection Out,Job Keyword,3,Text, Junior RPA Developer
+,,,,OUT,Collection Out,Job Title,3,Text,"Senior RPA Developer - UiPath, Celonis, ABBYY"
+,,,,OUT,Collection Out,Company Name,3,Text,Orbis
+,,,,OUT,Collection Out,Location,3,Text,United Kingdom
+,,,,OUT,Collection Out,Posted,3,Text,Reposted 5 months ago
+,,,,OUT,Collection Out,Applicants,3,Text,Over 100 applicants
+,,,,OUT,Collection Out,Salary,3,Text,"£50,000/yr - £75,000/yr "
+,,,,OUT,Collection Out,Remote/Hybrid,3,Text,"Remote
+"
+,,,,OUT,Collection Out,Job Type,3,Text, Full-time 
+,,,,OUT,Collection Out,Job Level,3,Text, Mid-Senior level
+,,,,OUT,Collection Out,Company Size,3,Text,51-200 employees
+,,,,OUT,Collection Out,Company Type,3,Text,Staffing and Recruiting
+,,,,OUT,Collection Out,About Company,3,Text,"About the jobSenior RPA Developer - RPA, UiPath, Celonis, ABBYY - Finance, P2P, O2CSalary: £50,0000 - £75,000 + Bonus and BenefitsLocation: UKOrbis have partnered with a leading international consultancy with over 100 clients, who look to design and implement next generation operating models, optimized processes and embed automation to find a Technical Lead (RPA, UiPath).This company has a primary focus on using innovation and tech to deliver more for each client. For the past 10 years they have bought experienced data tools and practitioners to help automate processes and drive transformation and real results delivered with assurance and high efficiency.You will be asked to help build automation, providing solutions with interesting and challenging projects. With a highly skilled team with an abundance of experience, in this highly driven, fast paced environment you will be working closely with stakeholders to ensure that solutions are met and built to fit all needs required.Key Responsibilities –Work with BA's to access and understand potential automation solutions to real life business problems.Provide clear, detailed documentation.Support existing automation's including, root cause analysis, clean-up, and bug fixes.Provide solutions and efficient models that can be translated to stakeholders.Work on high impact projects with high efficiencyContribute to design, build, implementation, testing and maintenance/support of automation solutions.Key Experience –2+ years’ experience in using and building with UiPath.Strong Understanding of best practices with operating models, optimized processes, and automationBeen involved in successful and high impact projects.Can translate models and results to stakeholders and clients.Don’t pass this opportunity if you want to join a leading consultancy with ample of growth opportunities and benefits. As well as work closely with stakeholders driving and automating successful projects!Please send a copy of your CV directly to this advertisement for immediate consideration."
+Count Rows,Action,,2/9/2024 13:39,,,,,,
+,,,,,,,,,
+,,,,IN,Collection Name,,,Text,Global Result Collection
+,,,,OUT,Count,,,Number,3
+Collection not Empty?,Decision,TRUE,2/9/2024 13:39,,,,,,
+Kill Excel,Action,,2/9/2024 13:39,,,,,,
+,,,,,,,,,
+,,,,IN,Process Name,,,Text,EXCEL
+Create File Path,Calculation,E:\Documents\BluePrism\LinkedInJobFinder\Search Results-09.02.2024.csv,2/9/2024 13:39,,,,,,
+Create Instance,Action,,2/9/2024 13:39,,,,,,
+,,,,,,,,,
+,,,,OUT,handle,,,Number,1
+Open Workbook,Action,,2/9/2024 13:40,,,,,,
+,,,,,,,,,
+,,,,IN,handle,,,Number,1
+,,,,IN,File name,,,Text,E:\Documents\BluePrism\LinkedInJobFinder\Search Results-09.02.2024.csv
+SE,Exception,ERROR: System Exception : File: E:\Documents\BluePrism\LinkedInJobFinder\Search Results-09.02.2024.csv does not exist or is not a file,2/9/2024 13:40,,,,,,
+Open Workbook,Action,ERROR: System Exception : File: E:\Documents\BluePrism\LinkedInJobFinder\Search Results-09.02.2024.csv does not exist or is not a file,2/9/2024 13:40,,,,,,
+Recover1,Recover,,2/9/2024 13:40,,,,,,
+Save Current Workbook As,Action,,2/9/2024 13:40,,,,,,
+,,,,,,,,,
+,,,,IN,handle,,,Number,1
+,,,,IN,File name,,,Text,E:\Documents\BluePrism\LinkedInJobFinder\Search Results-09.02.2024.csv
+,,,,OUT,New Workbook Name,,,Text,
+Resume3,Resume,,2/9/2024 13:40,,,,,,
+Create Worksheet,Action,,2/9/2024 13:40,,,,,,
+,,,,,,,,,
+,,,,IN,handle,,,Number,1
+,,,,IN,Workbook Name,,,Text,
+,,,,IN,Worksheet Name,,,Text,united kingdom
+Write Collection,Action,,2/9/2024 13:40,,,,,,
+,,,,,,,,,
+,,,,IN,handle,,,Number,1
+,,,,IN,Workbook Name,,,Text,
+,,,,IN,Worksheet Name,,,Text,united kingdom
+,,,,IN,Collection,,,,
+,,,,IN,Cell Reference,,,Text,A1
+,,,,IN,Include Column Names,,,Flag,TRUE
+,,,,IN,Collection,Job Keyword,1,Text,RPA Developer
+,,,,IN,Collection,Job Title,1,Text,"Senior RPA Developer - UiPath, Celonis, ABBYY"
+,,,,IN,Collection,Company Name,1,Text,Orbis
+,,,,IN,Collection,Location,1,Text,United Kingdom
+,,,,IN,Collection,Posted,1,Text,Reposted 5 months ago
+,,,,IN,Collection,Applicants,1,Text,Over 100 applicants
+,,,,IN,Collection,Salary,1,Text,"£50,000/yr - £75,000/yr "
+,,,,IN,Collection,Remote/Hybrid,1,Text,"Remote
+"
+,,,,IN,Collection,Job Type,1,Text, Full-time 
+,,,,IN,Collection,Job Level,1,Text, Mid-Senior level
+,,,,IN,Collection,Company Size,1,Text,51-200 employees
+,,,,IN,Collection,Company Type,1,Text,Staffing and Recruiting
+,,,,IN,Collection,About Company,1,Text,"About the jobSenior RPA Developer - RPA, UiPath, Celonis, ABBYY - Finance, P2P, O2CSalary: £50,0000 - £75,000 + Bonus and BenefitsLocation: UKOrbis have partnered with a leading international consultancy with over 100 clients, who look to design and implement next generation operating models, optimized processes and embed automation to find a Technical Lead (RPA, UiPath).This company has a primary focus on using innovation and tech to deliver more for each client. For the past 10 years they have bought experienced data tools and practitioners to help automate processes and drive transformation and real results delivered with assurance and high efficiency.You will be asked to help build automation, providing solutions with interesting and challenging projects. With a highly skilled team with an abundance of experience, in this highly driven, fast paced environment you will be working closely with stakeholders to ensure that solutions are met and built to fit all needs required.Key Responsibilities –Work with BA's to access and understand potential automation solutions to real life business problems.Provide clear, detailed documentation.Support existing automation's including, root cause analysis, clean-up, and bug fixes.Provide solutions and efficient models that can be translated to stakeholders.Work on high impact projects with high efficiencyContribute to design, build, implementation, testing and maintenance/support of automation solutions.Key Experience –2+ years’ experience in using and building with UiPath.Strong Understanding of best practices with operating models, optimized processes, and automationBeen involved in successful and high impact projects.Can translate models and results to stakeholders and clients.Don’t pass this opportunity if you want to join a leading consultancy with ample of growth opportunities and benefits. As well as work closely with stakeholders driving and automating successful projects!Please send a copy of your CV directly to this advertisement for immediate consideration."
+,,,,IN,Collection,Job Keyword,2,Text,RPA Developer
+,,,,IN,Collection,Job Title,2,Text,Senior RPA Developer - CRM
+,,,,IN,Collection,Company Name,2,Text,Hargreaves Lansdown
+,,,,IN,Collection,Location,2,Text,"Bristol, England, United Kingdom"
+,,,,IN,Collection,Posted,2,Text,3 days ago
+,,,,IN,Collection,Applicants,2,Text,56 applicants
+,,,,IN,Collection,Salary,2,Text,Not Provided
+,,,,IN,Collection,Remote/Hybrid,2,Text,"Remote
+"
+,,,,IN,Collection,Job Type,2,Text, Full-time 
+,,,,IN,Collection,Job Level,2,Text, Mid-Senior level
+,,,,IN,Collection,Company Size,2,Text,"1,001-5,000 employees"
+,,,,IN,Collection,Company Type,2,Text,Financial Services
+,,,,IN,Collection,About Company,2,Text,"About the jobExcited to grow your career?Our purpose is to empower people to save and invest with confidence. We are looking for great people to join us, so please come and invest in YOUR future at HL. About the role Salary: Up to £65,000 dependent on experience We are looking for talented people to join our CRM team as we embark upon our RPA journey. If you are someone with a wealth of RPA experience and want to work on a green field implementation, then we could have a role for you. This is an opportunity to join the UK's number one investment services company, looking after over £120 billion in assets on behalf of 1.8 million UK investors. We are a secure, FTSE 250 company, based in the heart of Bristol now with over 2,700 people. This is your chance to genuinely stamp your mark on one of the UK's most innovative and digital-focused businesses. You'll be given the support and opportunity to grow your career whilst additionally receiving a personal development budget to further build on your knowledge.  What you'll be doingParticipate in the full application life cycle - design, development, testing, and deploymentWork with technical teams and architects to finalise architectural specifications - and create solution and integration designsSetting up, testing and monitoring automated workflows to ensure that business processes function at optimum efficiency without risk of errorMonitoring and maintaining automation post-implementation and resolving any potential issues to ensure smooth business operationsAssist in identifying, troubleshooting, and resolving defects encountered during various stages of project delivery, including during the deployment and implementation of the solution in production environmentsProduce project documentation, including functional and technical designsMaintain standards and best practices and educate our teamMentor developers, while learning from othersCultivate strong working relationships both within working squad and in HL as a whole  About youPossess excellent problem-solving skillsHave excellent written and verbal communicationGreat attention to detailMastery of Automation tools, such as Mulesoft RPA, UiPath, Blue Prism and/or Automation Anywhere  Interview process2 stage interview process, 1 informal chat, 1 technical / competency focused interview.  Working ScheduleStandard Mon - Fri, 09:00 - 17:30 (we are however very flexible on working schedule so please do reach out with any requirements)  Why us?Here at HL, we're the UK's number 1 investment platform for private investors, based in Bristol. For more than 40 years we've helped investors save time, tax and money on their investments. To achieve our mission, we believe we have a workplace like no other, with constant learning, dynamic teams, and a great ethos. We're steered by core values that promote service, quality, innovation, and opportunity in everything we do. What's on offer?Discretionary annual bonus &amp; annual pay review25* days holiday plus bank holidays and 1-day additional Christmas closure timeOption to purchase an additional 5 days holiday per yearFlexible working options available, including hybrid workingPension scheme up to 11% employer contributionSharesave scheme - have a real stake in HL's futureIncome Protection &amp; Life insurance (4 x salary core level of cover)Health care cash plans - including optical, dental, and out patientcareHelp@hand and an Employee Assistance ProgrammeGympass - gym memberships and wellbeing apps availableVariety of travel to work schemes with free bike storage and shower facilitiesAn inhouse barista serving subsidised coffee and snacksJoin HL's sports, I&amp;D networks and volunteering groups (two paid volunteering days per year)LifeWorks Discounts on services, restaurants and retailers* up to 30 days depending on role level &amp; increasing with length of service  We know that sometimes people can be put off applying for a job if they don't tick every box. If you're excited about working for us and have most of the skills or experience we're looking for, please go ahead and apply. We'd love to hear from you! Hargreaves Lansdown is an inclusive employer that values diversity in its workforce. We encourage applications from all individuals without regard to race, religion, gender, sexual orientation, national origin, disability or age. This role may also be available on a flexible working or part time basis - please ask the Recruitment &amp; Onboarding team for more information. Please note, we are unable to provide employment sponsorship to candidates."
+,,,,IN,Collection,Job Keyword,3,Text, Junior RPA Developer
+,,,,IN,Collection,Job Title,3,Text,"Senior RPA Developer - UiPath, Celonis, ABBYY"
+,,,,IN,Collection,Company Name,3,Text,Orbis
+,,,,IN,Collection,Location,3,Text,United Kingdom
+,,,,IN,Collection,Posted,3,Text,Reposted 5 months ago
+,,,,IN,Collection,Applicants,3,Text,Over 100 applicants
+,,,,IN,Collection,Salary,3,Text,"£50,000/yr - £75,000/yr "
+,,,,IN,Collection,Remote/Hybrid,3,Text,"Remote
+"
+,,,,IN,Collection,Job Type,3,Text, Full-time 
+,,,,IN,Collection,Job Level,3,Text, Mid-Senior level
+,,,,IN,Collection,Company Size,3,Text,51-200 employees
+,,,,IN,Collection,Company Type,3,Text,Staffing and Recruiting
+,,,,IN,Collection,About Company,3,Text,"About the jobSenior RPA Developer - RPA, UiPath, Celonis, ABBYY - Finance, P2P, O2CSalary: £50,0000 - £75,000 + Bonus and BenefitsLocation: UKOrbis have partnered with a leading international consultancy with over 100 clients, who look to design and implement next generation operating models, optimized processes and embed automation to find a Technical Lead (RPA, UiPath).This company has a primary focus on using innovation and tech to deliver more for each client. For the past 10 years they have bought experienced data tools and practitioners to help automate processes and drive transformation and real results delivered with assurance and high efficiency.You will be asked to help build automation, providing solutions with interesting and challenging projects. With a highly skilled team with an abundance of experience, in this highly driven, fast paced environment you will be working closely with stakeholders to ensure that solutions are met and built to fit all needs required.Key Responsibilities –Work with BA's to access and understand potential automation solutions to real life business problems.Provide clear, detailed documentation.Support existing automation's including, root cause analysis, clean-up, and bug fixes.Provide solutions and efficient models that can be translated to stakeholders.Work on high impact projects with high efficiencyContribute to design, build, implementation, testing and maintenance/support of automation solutions.Key Experience –2+ years’ experience in using and building with UiPath.Strong Understanding of best practices with operating models, optimized processes, and automationBeen involved in successful and high impact projects.Can translate models and results to stakeholders and clients.Don’t pass this opportunity if you want to join a leading consultancy with ample of growth opportunities and benefits. As well as work closely with stakeholders driving and automating successful projects!Please send a copy of your CV directly to this advertisement for immediate consideration."
+Set Column Width,Action,,2/9/2024 13:40,,,,,,
+,,,,,,,,,
+,,,,IN,Handle,,,Number,1
+,,,,IN,Workbook,,,Text,
+,,,,IN,Worksheet,,,Text,united kingdom
+,,,,IN,Column Range,,,Text,M
+,,,,IN,Column Size,,,Number,100
+Close Workbook,Action,,2/9/2024 13:40,,,,,,
+,,,,,,,,,
+,,,,IN,handle,,,Number,1
+,,,,IN,Workbook Name,,,Text,
+,,,,IN,Save Data,,,Flag,TRUE
+Close Instance,Action,,2/9/2024 13:40,,,,,,
+,,,,,,,,,
+,,,,IN,handle,,,Number,1
+,,,,IN,Save Changes,,,Flag,TRUE
+Send Email,Sub Sheet,,2/9/2024 13:40,,,,,,
+,,,,,,,,,
+,,,,IN,File Path,,,Text,E:\Documents\BluePrism\LinkedInJobFinder\
+,,,,IN,Email,,,Text,fvtvlnight@gmail.com
+,,,,IN,File Pattern,,,Text,*.csv*
+,,,,IN,Subject,,,Text,Successful search in
+Check Email?,Decision,TRUE,2/9/2024 13:40,,,,,,
+Get Files,Action,,2/9/2024 13:40,,,,,,
+,,,,,,,,,
+,,,,IN,Folder,,,Text,E:\Documents\BluePrism\LinkedInJobFinder\
+,,,,IN,Patterns CSV,,,Text,*.csv*
+,,,,OUT,Success,,,Flag,TRUE
+,,,,OUT,Message,,,Text,
+,,,,OUT,Files,,,,
+,,,,OUT,Files,Path,1,Text,E:\Documents\BluePrism\LinkedInJobFinder\Search Results-09.02.2024.csv
+,,,,OUT,Files,Folder,1,Text,E:\Documents\BluePrism\LinkedInJobFinder
+,,,,OUT,Files,Name,1,Text,Search Results-09.02.2024.csv
+,,,,OUT,Files,Extension,1,Text,.csv
+,,,,OUT,Files,Created,1,DateTime,2024-02-09 13:40:02Z
+,,,,OUT,Files,Last Accessed,1,DateTime,2024-02-09 13:40:03Z
+,,,,OUT,Files,Last Written,1,DateTime,2024-02-09 13:40:03Z
+,,,,OUT,Files,Read Only,1,Flag,FALSE
+,,,,OUT,Files,Bytes,1,Number,13384
+Success?,Decision,TRUE,2/9/2024 13:40,,,,,,
+Count Rows,Action,,2/9/2024 13:40,,,,,,
+,,,,,,,,,
+,,,,IN,Collection Name,,,Text,Files
+,,,,OUT,Count,,,Number,1
+Files >0,Decision,TRUE,2/9/2024 13:40,,,,,,
+Create Archive Path,Calculation,E:\Documents\BluePrism\LinkedInJobFinder\Archive,2/9/2024 13:40,,,,,,
+Files,Loop Start,1 of 1,2/9/2024 13:40,,,,,,
+Send Email,Action,,2/9/2024 13:40,,,,,,
+,,,,,,,,,
+,,,,IN,To,,,Text,fvtvlnight@gmail.com
+,,,,IN,Subject,,,Text,Successful search in
+,,,,IN,Message,,,Text,Check the attachments below
+,,,,IN,Attachments,,,Text,E:\Documents\BluePrism\LinkedInJobFinder\Search Results-09.02.2024.csv
+Success,Decision,TRUE,2/9/2024 13:40,,,,,,
+Files,Loop End,1 of 1,2/9/2024 13:40,,,,,,
+End,End,,2/9/2024 13:40,,,,,,
+End,End,,2/9/2024 13:40,,,,,,
+Close Down,Sub Sheet,,2/9/2024 13:40,,,,,,
+Log Out,Action,,2/9/2024 13:40,,,,,,
+Terminate,Action,,2/9/2024 13:40,,,,,,
+End10,End,,2/9/2024 13:40,,,,,,
+Recover,Recover,,2/9/2024 13:40,,,,,,
+Resume,Resume,,2/9/2024 13:40,,,,,,
